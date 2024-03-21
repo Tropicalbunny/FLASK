@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<section class="gametop">
+    <div class="gametopbox" id="roundCounter"><h1 id="round">Round:</h1><p id="roundNumber">0</p></div>
+    <div class="gametopbox">
+        <ul id="infohome">
+            <li><button class="buttongame" id="info-open"><i class="fa-solid fa-question"  style="color: #000000;"></i></button></li>
+            <li><button class="buttongame" id="home" onclick="transitionToPage('index.html')"><i class="fa-solid fa-house" style="color: #000000;"></i></button></li>
+        </ul>
+    </div>
+</section>
+<!-- board for the hangman images-->
+<section>
+    <div id="hangman-image"></div>
+    <div id="word-guess"></div>
+    <div id="letter-guesses"></div>
+</section>
+{% endblock %}
