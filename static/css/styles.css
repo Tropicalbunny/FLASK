@@ -75,3 +75,12 @@ html{
     background-color: #8422D0;
 }
 
+#letter-guesses{
+    margin: auto;
+    margin-top: 30px;
+    width:400px;
+    height:200px;
+    background-color: aqua;
+    font-size: xx-large;
+    text-align: center;
+}
