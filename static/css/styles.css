@@ -63,7 +63,6 @@ html{
 #hangman-image-inner{
     width:400px;
     height:400px;
-    background-color: #FFFFFF;
     margin: auto;
 }
 /*hangman guess board */

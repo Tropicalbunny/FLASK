@@ -13,6 +13,13 @@
         .then(response => response.json())
         .then(data => console.log(data));
     }
+    function updateImage() {
+        fetch('/update-image')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('hangman-image-inner').src = data.new_image_src;
+        });
+    }
     </script>
 {% endblock %}
 
@@ -29,12 +36,12 @@
 <!-- board for the hangman images-->
 <section>
     <div id="hangman-image-outer">
-        <div id="hangman-image-inner"></div>
+        <img id="hangman-image-inner" src="">
     </div>
     <div id="word-guess"><p>{{ displayedLetters }}</p></div>
     <div id="letter-guesses">
         <form>
-        <button onclick="sendValue(this.value)" value ="a">A</button>
+        <button onclick="sendValue(this.value), updateImage()" value ="a">A</button>
         <button onclick="sendValue(this.value)" value ="b">B</button>
         <button onclick="sendValue(this.value)" value ="c">C</button>
         <button onclick="sendValue(this.value)" value ="d">D</button>
