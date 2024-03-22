@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<script>
+    function sendValue(buttonValue) {
+        fetch('/button', {
+            method: 'POST',
+            body: JSON.stringify({value: buttonValue}),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => console.log(data));
+    }
+    </script>
 {% endblock %}
 
 {% block body %}
@@ -19,6 +32,12 @@
         <div id="hangman-image-inner"></div>
     </div>
     <div id="word-guess"><p>{{ displayedLetters }}</p></div>
-    <div id="letter-guesses"><p>A B C D E F G H I J K M N L O P Q R S T U V W Y X</p></div>
+    <div id="letter-guesses">
+        <form>
+        <button onclick="sendValue(this.value)" value ="a">A</button>
+        <button onclick="sendValue(this.value)" value ="b">B</button>
+        <button onclick="sendValue(this.value)" value ="c">C</button>
+        </form>
+    </div>
 </section>
 {% endblock %}
