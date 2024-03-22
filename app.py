@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request,  request, render_template_string
+import time
 
 app = Flask(__name__)
 
@@ -11,10 +12,15 @@ eachGuessedLetter = ""
 correctLetters = ""
 value = ""
 
-
+for letter in databaseWord:
+        correctLetters += "_"
+        correctLetters += " "
 def hanmgan(guess):
     global guessesLeft
     global eachGuessedLetter
+    global correctLetters
+    eachGuessedLetter = eachGuessedLetter + guess
+    correctLetters = ""
     if guess in databaseWord:
         print("Correct")
     else:
@@ -24,8 +30,7 @@ def hanmgan(guess):
             print("you lose")
 
     #storing guessed letters
-    eachGuessedLetter = eachGuessedLetter + guess
-    correctLetters = ""
+
     for letter in databaseWord:
         if letter in eachGuessedLetter:
             correctLetters += f"{letter}"
@@ -35,6 +40,7 @@ def hanmgan(guess):
             correctLetters += "_"
             correctLetters += " "
     print(guessesLeft)
+    print(eachGuessedLetter)
 
 
 
@@ -42,9 +48,6 @@ def hanmgan(guess):
 def index():
     return render_template('/index.html')
 
-@app.route('/gameboard')
-def gameboard():
-    return render_template('/gameboard.html', displayedLetters = correctLetters)
 
 @app.route('/button', methods=["GET", "POST"])
 def buttonpress():
@@ -54,6 +57,11 @@ def buttonpress():
     # Call your Python function here with the value
     print(f'Button clicked with value: {value}')
     return {'status': 'success', 'value_received': value}
+
+@app.route('/gameboard')
+def gameboard():
+    time.sleep(0.1)
+    return render_template('/gameboard.html', displayedLetters = correctLetters)
 
 if __name__ == "__main__":
     app.run(debug=True)
