@@ -93,3 +93,32 @@ html{
 .guess-button:hover{
     background-color:#8422D0 ;
 }
+/* styling for info popup */
+#info{
+    background-color: #1E1E1E;
+    position: relative;
+    left: 50%;
+    transform:translate(-50%);
+    text-align: center;
+    width: 700px;
+    height:500px;
+    padding:20px;
+    border-radius: 15px;
+    display: flex;
+}
+#info-close{
+    font-size: 30px;
+    float: right;
+}
+#info-close:hover{
+    color:#8422D0;
+}
+#info-container{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height:100%;
+    z-index: 1;
+}
