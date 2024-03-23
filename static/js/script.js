@@ -1,7 +1,4 @@
 
-let infoOpen = document.getElementById('info-open');
-let infoContainer = document.getElementById('info-container');
-let infoClose = document.getElementById('info-close');
 
 function sendValue(buttonValue) {
     fetch('/button', {
@@ -51,11 +48,17 @@ fetch('/updateButtons')
     });
 });
 
-infoOpen.addEventListener('click', function(){
-infoContainer.style.display = 'block';
-})
 
-infoClose.addEventListener('click', function(){
-    infoContainer.style.display = 'none';
-})
+document.addEventListener("DOMContentLoaded", (event) => {
+    let infoOpen = document.getElementById('info-open');
+    let infoContainer = document.getElementById('info-container');
+    let infoClose = document.getElementById('info-close');
+    infoOpen.addEventListener('click', function(){
+        infoContainer.style.display = 'block';
+    })
+    
+    infoClose.addEventListener('click', function(){
+        infoContainer.style.display = 'none';
+    })
+});
 

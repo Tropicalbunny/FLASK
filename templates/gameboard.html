@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
+<script type="text/javascript" src="{{ url_for('static', filename='/js/script.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -57,6 +57,9 @@
 <section>
     <div id="info-container">
         <div id="info">
+            <div id="info-text"><p>Hangman is a very simple game, guess the word. the word is displayed in blank letter which you must guess using the letters below.</p>
+                <p>Once a letter has been guessed it is removed from the guessing buttons, you have 7 lifes. you lose if you get to 0 and the hangman is fully made</p>
+            </div>
             <div id="info-close">&times;</div>
         </div>
     </div>
