@@ -20,7 +20,22 @@
             document.getElementById('hangman-image-inner').src = data.new_image_src;
         });
     }
-    </script>
+    function hideButton(buttonId) {
+            var button = document.getElementById(buttonId);
+            button.style.display = 'none'; 
+        }
+    fetch('/updateButtons')
+        .then(response => response.json())
+        .then(data => {
+        
+        let buttonsArray = data.split('');
+
+        buttonsArray.forEach(element => {
+            hideButton(element);
+            console.log(element);
+        });
+    });
+</script>
 {% endblock %}
 
 {% block body %}
@@ -41,32 +56,32 @@
     <div id="word-guess"><p>{{ displayedLetters }}</p></div>
     <div id="letter-guesses">
         <form>
-        <button onclick="sendValue(this.value), updateImage()" value ="a">A</button>
-        <button onclick="sendValue(this.value)" value ="b">B</button>
-        <button onclick="sendValue(this.value)" value ="c">C</button>
-        <button onclick="sendValue(this.value)" value ="d">D</button>
-        <button onclick="sendValue(this.value)" value ="e">E</button>
-        <button onclick="sendValue(this.value)" value ="f">F</button>
-        <button onclick="sendValue(this.value)" value ="g">G</button>
-        <button onclick="sendValue(this.value)" value ="h">H</button>
-        <button onclick="sendValue(this.value)" value ="i">I</button>
-        <button onclick="sendValue(this.value)" value ="j">J</button>
-        <button onclick="sendValue(this.value)" value ="k">k</button>
-        <button onclick="sendValue(this.value)" value ="l">L</button>
-        <button onclick="sendValue(this.value)" value ="m">M</button>
-        <button onclick="sendValue(this.value)" value ="n">N</button>
-        <button onclick="sendValue(this.value)" value ="o">O</button>
-        <button onclick="sendValue(this.value)" value ="p">P</button>
-        <button onclick="sendValue(this.value)" value ="q">Q</button>
-        <button onclick="sendValue(this.value)" value ="r">R</button>
-        <button onclick="sendValue(this.value)" value ="s">S</button>
-        <button onclick="sendValue(this.value)" value ="t">T</button>
-        <button onclick="sendValue(this.value)" value ="u">U</button>
-        <button onclick="sendValue(this.value)" value ="v">V</button>
-        <button onclick="sendValue(this.value)" value ="w">W</button>
-        <button onclick="sendValue(this.value)" value ="x">X</button>
-        <button onclick="sendValue(this.value)" value ="y">Y</button>
-        <button onclick="sendValue(this.value)" value ="z">Z</button>
+        <button onclick="sendValue(this.value)" id="a" value ="a">A</button>
+        <button onclick="sendValue(this.value)" id="b" value ="b">B</button>
+        <button onclick="sendValue(this.value)" id="c" value ="c">C</button>
+        <button onclick="sendValue(this.value)" id="d" value ="d">D</button>
+        <button onclick="sendValue(this.value)" id="e" value ="e">E</button>
+        <button onclick="sendValue(this.value)" id="f" value ="f">F</button>
+        <button onclick="sendValue(this.value)" id="g" value ="g">G</button>
+        <button onclick="sendValue(this.value)" id="h" value ="h">H</button>
+        <button onclick="sendValue(this.value)" id="i" value ="i">I</button>
+        <button onclick="sendValue(this.value)" id="j" value ="j">J</button>
+        <button onclick="sendValue(this.value)" id="k" value ="k">k</button>
+        <button onclick="sendValue(this.value)" id="l" value ="l">L</button>
+        <button onclick="sendValue(this.value)" id="m" value ="m">M</button>
+        <button onclick="sendValue(this.value)" id="n" value ="n">N</button>
+        <button onclick="sendValue(this.value)" id="o" value ="o">O</button>
+        <button onclick="sendValue(this.value)" id="p" value ="p">P</button>
+        <button onclick="sendValue(this.value)" id="q" value ="q">Q</button>
+        <button onclick="sendValue(this.value)" id="r" value ="r">R</button>
+        <button onclick="sendValue(this.value)" id="s" value ="s">S</button>
+        <button onclick="sendValue(this.value)" id="t" value ="t">T</button>
+        <button onclick="sendValue(this.value)" id="u" value ="u">U</button>
+        <button onclick="sendValue(this.value)" id="v" value ="v">V</button>
+        <button onclick="sendValue(this.value)" id="w" value ="w">W</button>
+        <button onclick="sendValue(this.value)" id="x" value ="x">X</button>
+        <button onclick="sendValue(this.value)" id="y" value ="y">Y</button>
+        <button onclick="sendValue(this.value)" id="z" value ="z">Z</button>
 
         </form>
     </div>
