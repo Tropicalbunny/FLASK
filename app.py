@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request,  request, render_template_string, jsonify, session
+from flask import Flask, render_template, request,  request, render_template_string, jsonify
 import time
 
-app = Flask(__name__)
-app.secret_key = 'your_secret_key'  
+app = Flask(__name__)  
 
 
 #code to run main game
@@ -55,18 +54,15 @@ def index():
 def updateButtons():
     global eachGuessedLetter
     buttonsToUpdate = eachGuessedLetter
-    print(buttonsToUpdate)
     return jsonify(buttonsToUpdate)
 
 
 # used to grab a value from a button press to be used within the game
 @app.route('/button', methods=["GET", "POST"])
 def buttonpress():
-    
     data = request.json
     value = data['value']
     hangman(value)
-
     return {'status': 'success', 'value_received': value}
 
 @app.route('/gameboard')
@@ -79,6 +75,7 @@ def gameboard():
 @app.route('/update-image', methods=["GET", "POST"])
 def update_image():
     global guessesLeft
+    imageUpdate = guessesLeft
     if guessesLeft == 7:
         new_image_src = "/static/images/hang1.png" 
     elif guessesLeft == 6:
@@ -96,7 +93,7 @@ def update_image():
     else:
         new_image_src = "/static/images/hang8.png"
     
-    return jsonify(new_image_src=new_image_src)
+    return jsonify(imageUpdate)
 
 
 if __name__ == "__main__":
