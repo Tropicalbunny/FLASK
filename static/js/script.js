@@ -1,5 +1,5 @@
 
-
+/**sends the value of the specific button pressed */
 function sendValue(buttonValue) {
     fetch('/button', {
         method: 'POST',
@@ -32,6 +32,7 @@ fetch('/update-image')
         document.getElementById('hangman-image-inner').src = "/static/images/hang1.png" 
     }
 });
+/** function to remove buttons after they are pressed */
 function hideButton(buttonId) {
         var button = document.getElementById(buttonId);
         button.style.display = 'none'; 
@@ -47,8 +48,11 @@ fetch('/updateButtons')
         console.log(element);
     });
 });
-
-
+/**function used to transition to game page */
+function goToGameboard() {
+    window.location.href = '/gameboard';
+}
+/** event listener to allow for get elements to work correctly */
 document.addEventListener("DOMContentLoaded", (event) => {
     let infoOpen = document.getElementById('info-open');
     let infoContainer = document.getElementById('info-container');
@@ -60,5 +64,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     infoClose.addEventListener('click', function(){
         infoContainer.style.display = 'none';
     })
+
+    
 });
 

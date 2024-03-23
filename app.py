@@ -15,6 +15,7 @@ value = ""
 for letter in databaseWord:
         correctLetters += "_"
         correctLetters += " "
+# main function to run the game
 def hangman(guess):
     global guessesLeft
     global eachGuessedLetter
@@ -44,7 +45,7 @@ def hangman(guess):
     print(eachGuessedLetter)
 
 
-
+# used to create the connection for the home screen
 @app.route('/')
 def index():
     return render_template('/index.html')
@@ -65,34 +66,18 @@ def buttonpress():
     hangman(value)
     return {'status': 'success', 'value_received': value}
 
+# used to create the connection for the gameboard html
 @app.route('/gameboard')
 def gameboard():
     time.sleep(0.1)
-    return render_template('/gameboard.html', displayedLetters = correctLetters,)
+    return render_template('gameboard.html', displayedLetters = correctLetters,)
 
 
-# updates the image bases on how many guesses are left
+# updates the image bases on how many guesses are left, sends the data to js for processing
 @app.route('/update-image', methods=["GET", "POST"])
 def update_image():
     global guessesLeft
     imageUpdate = guessesLeft
-    if guessesLeft == 7:
-        new_image_src = "/static/images/hang1.png" 
-    elif guessesLeft == 6:
-        new_image_src = "/static/images/hang2.png"
-    elif guessesLeft == 5:
-        new_image_src = "/static/images/hang3.png"
-    elif guessesLeft == 4:
-        new_image_src = "/static/images/hang4.png"
-    elif guessesLeft == 3:
-        new_image_src = "/static/images/hang5.png"
-    elif guessesLeft == 2:
-        new_image_src = "/static/images/hang6.png"
-    elif guessesLeft == 1:
-        new_image_src = "/static/images/hang7.png"
-    else:
-        new_image_src = "/static/images/hang8.png"
-    
     return jsonify(imageUpdate)
 
 
