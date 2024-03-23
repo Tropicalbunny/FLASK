@@ -48,7 +48,7 @@ def hangman(guess):
 # used to create the connection for the home screen
 @app.route('/')
 def index():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 # updates the buttons to be removed when clicked
 @app.route('/updateButtons')
