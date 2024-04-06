@@ -8,7 +8,7 @@ body{
     background-color:#4B4B4B ;
 }
 button{
-    
+
 }
 /************************************************************************
 TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
@@ -30,7 +30,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 
 #logo {
     height: inherit;
-    background: url("../assets/images/Logo.jpg") no-repeat center center;
+    background: url("/static/images/Logo.png") no-repeat center center;
     background-size: contain;
 }
 
@@ -52,6 +52,37 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .nav-size{
     width: 100px;
 }
+
+/* styiling for main form structure */
+#form-outer {
+    width: 100%;
+    text-align: center;
+}
+
+#form {
+    width: 500px;
+    text-align: center;
+    background-color: #8422D0c7;
+    padding: 20px;
+    margin: 150px auto;
+    border-radius: 30px;
+    font-size: 125%;
+}
+
+/* Form image background styles */
+#form-image-outer {
+    height: 1000px;
+    Width: 100%;
+    position: relative;
+
+}
+
+#form-background {
+    height: inherit;
+    width: 100%;
+    overflow: hidden;
+}
+
 /* END OF PROJECT 1 */
 /* home screen styles */
 #title{

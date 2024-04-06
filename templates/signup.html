@@ -5,5 +5,47 @@
 {% endblock %}
 
 {% block body %}
-
+    <!--start of form-->
+    <div class="location-title">
+        <h1 id="title">Signup so you can come  back later!</h1>
+    </div>
+    <section id="form-image-outer">
+        <div id="form-background">
+            <div id="form">
+                <h2>Your Details</h2>
+                <form action="form-success.html" method="get">
+                    <label for="firstname" class="form-label"><strong>First Name:</strong></label>
+                    <input Id="firstname" class="form-control" type="text" placeholder="First name" required>
+                    <br>
+                    <label for="surname" class="form-label"><strong>Surname:</strong></label>
+                    <input id="surname" class="form-control" type="text" placeholder="Surname">
+                    <br>
+                    <label for="Email" class="form-label"><strong>Email:</strong></label>
+                    <input id="Email" class="form-control" type="email" placeholder="Email" required>
+                    <br>
+                    <label For="agerange" class="form-label"><strong>Age:</strong></label>
+                    <select id="agerange" class="form-control" name="agerange">
+                        <option value="under-20">Under 20</option>
+                        <option value="20">20-29</option>
+                        <option value="30">30-39</option>
+                        <option value="40">40-49</option>
+                        <option value="50">50-59</option>
+                        <option value="60+">60+</option>
+                    </select>
+                    <br>
+                    <label for="password1"><strong>Password:</strong></label>
+                    <br>
+                    <input id="password1" placeholder="Password" class="form-control" required></input>
+                    <br>
+                    <label for="password2"><strong>Confirm Password:</strong></label>
+                    <br>
+                    <input id="password2" placeholder="Confirm Password" class="form-control" required></input>
+                    <br>
+                    <button type="submit" class="btn btn-dark">Signup!</button>
+                    <input type="reset" value="Reset Form" class="btn btn-dark">
+                </form>
+            </div>
+        </div>
+    </section>
+    <!--End of form-->
 {% endblock %}
