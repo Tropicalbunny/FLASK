@@ -4,9 +4,55 @@
     font-family: 'Klee One';
 
 }
-html{
+body{
     background-color:#4B4B4B ;
 }
+button{
+    
+}
+/************************************************************************
+TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
+*************************************************************************/
+/* nav back false back for positioning */
+#nav-back {
+    background-color:#8422D0 ;
+    border: 0px;
+    width: 100%;
+    height: 150px;
+}
+
+/* container for logo manipulation */
+#logo-container {
+    height: 100px;
+    margin:auto;
+    position: relative;
+}
+
+#logo {
+    height: inherit;
+    background: url("../assets/images/Logo.jpg") no-repeat center center;
+    background-size: contain;
+}
+
+/*container to hold nav links */
+#menu-container {
+    margin: auto;
+    font-size: 120%;
+}
+
+/* spacing off central text */
+.navspacing {
+    padding: 0 150px;
+}
+/*resonsive design for what sheet is currently active */
+.activesheet {
+    font-weight: 700;
+    font-size: 120%;
+}
+.nav-size{
+    width: 100px;
+}
+/* END OF PROJECT 1 */
 /* home screen styles */
 #title{
     text-align: center;

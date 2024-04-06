@@ -11,7 +11,7 @@ function sendValue(buttonValue) {
     .then(response => response.json())
     .then(data => console.log(data));
 }
-fetch('/update-image')
+fetch('/updateimage')
     .then(response => response.json())
     .then(data => {
         if (data == 6) {
@@ -32,6 +32,16 @@ fetch('/update-image')
         document.getElementById('hangman-image-inner').src = "/static/images/hang1.png" 
     }
 });
+fetch('/isGameOver')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        if (data == 1) {
+            window.location.href = '/fail'
+    } else if (data == 2){
+        window.location.href = '/pass'
+    }
+})
 /** function to remove buttons after they are pressed */
 function hideButton(buttonId) {
         var button = document.getElementById(buttonId);
@@ -52,6 +62,7 @@ fetch('/updateButtons')
 function goToGameboard() {
     window.location.href = '/gameboard';
 }
+
 /** event listener to allow for get elements to work correctly */
 document.addEventListener("DOMContentLoaded", (event) => {
     let infoOpen = document.getElementById('info-open');

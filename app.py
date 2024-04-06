@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request,  request, render_template_string, jsonify
+from flask import Flask, render_template, request,  request, render_template_string, jsonify, redirect, url_for
 import time
 
 app = Flask(__name__)  
@@ -11,6 +11,7 @@ guessesLeft = 7
 eachGuessedLetter = ""
 correctLetters = ""
 value = ""
+gameOver = 0
 
 for letter in databaseWord:
         correctLetters += "_"
@@ -20,6 +21,7 @@ def hangman(guess):
     global guessesLeft
     global eachGuessedLetter
     global correctLetters
+    global gameOver
     eachGuessedLetter = eachGuessedLetter + guess
     correctLetters = ""
     if guess in databaseWord:
@@ -29,7 +31,9 @@ def hangman(guess):
         print("wrong")
         update_image()
         if guessesLeft == 0:
-            print("you lose")
+            print("iwork")
+            gameOver = 1
+            return gameOver
 
     #storing guessed letters
 
@@ -41,6 +45,10 @@ def hangman(guess):
         else:
             correctLetters += "_"
             correctLetters += " "
+    if all(letter in eachGuessedLetter for letter in databaseWord):
+        gameOver = 2
+        return gameOver
+    
     print(guessesLeft)
     print(eachGuessedLetter)
 
@@ -74,12 +82,38 @@ def gameboard():
 
 
 # updates the image bases on how many guesses are left, sends the data to js for processing
-@app.route('/update-image', methods=["GET", "POST"])
+@app.route('/updateimage', methods=["GET", "POST"])
 def update_image():
     global guessesLeft
     imageUpdate = guessesLeft
     return jsonify(imageUpdate)
+# used to tell java if the game is running, passed or failed
 
+@app.route('/isGameOver', methods=["GET", "POST"])
+def game_over():
+    global gameOver
+    return jsonify(gameOver)
+
+# used to tell the user they have won
+@app.route('/pass')
+def passLevel():
+    time.sleep(0.1)
+    return render_template('pass.html',)
+# used to tell the user they have lost
+@app.route('/fail')
+def failLevel():
+    time.sleep(0.1)
+    return render_template('fail.html',)
+# used to login to the game
+@app.route('/login')
+def login():
+    time.sleep(0.1)
+    return render_template('login.html',)
+# used to create a login for the game 
+@app.route('/signup')
+def signup():
+    time.sleep(0.1)
+    return render_template('signup.html',)
 
 if __name__ == "__main__":
     app.run(debug=True)
