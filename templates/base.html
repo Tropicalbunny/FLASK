@@ -29,13 +29,13 @@
                     <div class=" navbar-collapse collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto" id="menu-container">
                             <li class="nav-item ">
-                                <a class="nav-link small-screen link-hover" href="index.html">Home</a>
+                                <a class="nav-link small-screen link-hover" href="/">Home</a>
                             </li>
                             <li class="nav-item navspacing">
-                                <a class="nav-link small-screen activesheet link-hover" href="index.html">Game</a>
+                                <a class="nav-link small-screen activesheet link-hover" href="/gameboard">Game</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link small-screen link-hover" href="Contact-us.html">Sign In/SignOut</a>
+                                <a class="nav-link small-screen link-hover" href="/signup">Sign In/SignOut</a>
                             </li>
                         </ul>
                     </div>
@@ -43,6 +43,27 @@
             </div>
         </div>
     </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        {% if category == 'fail' %}
+        <div class="alert-danger alert alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% else %}
+        <div class="alert-success alert alter-dismissable fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     </section>
     {% block body %}{% endblock %}
 </body>

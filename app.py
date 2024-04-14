@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request,  request, render_template_string, jsonify, redirect, url_for
+from flask import Flask, render_template, request, render_template_string, jsonify, redirect, url_for, flash
 import time
 
 app = Flask(__name__)  
-
+app.secret_key = 'test'
 
 #code to run main game
 
@@ -105,15 +105,31 @@ def failLevel():
     time.sleep(0.1)
     return render_template('fail.html',)
 # used to login to the game
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
     time.sleep(0.1)
+    data = request.form
+    print(data)
     return render_template('login.html',)
 # used to create a login for the game 
-@app.route('/signup')
+@app.route('/signup', methods=["GET", "POST"])
 def signup():
     time.sleep(0.1)
-    return render_template('signup.html',)
+    if request.method == 'POST':
+        email = request.form.get('email')
+        firstName = request.form.get('firstName')
+        password1 = request.form.get('password1')
+        password2 = request.form.get('password2')
+
+        if password1 != password2:
+            flash('Passwords do not match', category='fail')
+        elif len(password1) < 5:
+            flash('Password must be longer than 5 characters', category='fail')
+        else:
+            flash('Account created!', category='pass')
+
+
+    return render_template('signup.html', boolean=True)
 
 if __name__ == "__main__":
     app.run(debug=True)
