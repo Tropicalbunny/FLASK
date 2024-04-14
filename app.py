@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, render_template_string, jsonify, redirect, url_for, flash
 import time
+import sqlite3
 
 app = Flask(__name__)  
 app.secret_key = 'test'
+DB_NAME = "database.db"
 
 #code to run main game
 
@@ -99,11 +101,13 @@ def game_over():
 def passLevel():
     time.sleep(0.1)
     return render_template('pass.html',)
+
 # used to tell the user they have lost
 @app.route('/fail')
 def failLevel():
     time.sleep(0.1)
     return render_template('fail.html',)
+
 # used to login to the game
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -111,13 +115,14 @@ def login():
     data = request.form
     print(data)
     return render_template('login.html',)
+
 # used to create a login for the game 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
     time.sleep(0.1)
     if request.method == 'POST':
         email = request.form.get('email')
-        firstName = request.form.get('firstName')
+        name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
 
@@ -127,6 +132,12 @@ def signup():
             flash('Password must be longer than 5 characters', category='fail')
         else:
             flash('Account created!', category='pass')
+            conn = sqlite3.connect('loginInfo.db') 
+            cursor = conn.cursor() 
+            cursor.execute("INSERT INTO loginInfo (name, email, password) VALUES (?, ?, ?)", (name, email, password1)) 
+            conn.commit() 
+            conn.close() 
+            return render_template('index.html')
 
 
     return render_template('signup.html', boolean=True)
