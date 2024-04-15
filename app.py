@@ -15,6 +15,7 @@ correctLetters = ""
 value = ""
 gameOver = 0
 
+
 for letter in databaseWord:
         correctLetters += "_"
         correctLetters += " "
@@ -125,16 +126,21 @@ def signup():
         name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        query = "SELECT * FROM loginInfo WHERE email = ? "
+        conn = sqlite3.connect('loginInfo.db') 
+        cursor = conn.cursor() 
+        cursor.execute(query, (email,))
+        emailCheck = cursor.fetchone()
 
         if password1 != password2:
             flash('Passwords do not match', category='fail')
         elif len(password1) < 5:
             flash('Password must be longer than 5 characters', category='fail')
+        elif emailCheck is not None:
+            flash('Email exists in the database', category='fail')
         else:
             flash('Account created!', category='pass')
-            conn = sqlite3.connect('loginInfo.db') 
-            cursor = conn.cursor() 
-            cursor.execute("INSERT INTO loginInfo (name, email, password) VALUES (?, ?, ?)", (name, email, password1)) 
+            cursor.execute("INSERT INTO loginInfo (name, email, password) VALUES (?, ?, ?)", ((name,), (email,), (password1,)))
             conn.commit() 
             conn.close() 
             return render_template('index.html')
