@@ -156,14 +156,13 @@ def signup():
         name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        usernameCheck = coll.find({"username": username,})
+        usernameCheck = coll.find_one({"username": username,})
         if password1 != password2:
             flash('Passwords do not match', category='fail')
         elif len(password1) < 5:
             flash('Password must be longer than 5 characters', category='fail')
-        elif usernameCheck is not None:
-            flash('Username exists in the database', category='fail')
-            print(usernameCheck)
+        elif usernameCheck:
+            flash('username exists in the database', category='fail') 
         else:
             flash('Account created!', category='pass')
             newInfo = {
@@ -171,7 +170,7 @@ def signup():
                     "username": username,
                     "password": password1 
             }
-            coll.insert(newInfo)
+            coll.insert_one(newInfo)
             return render_template('index.html')
 
 
