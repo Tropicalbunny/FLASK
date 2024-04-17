@@ -1,12 +1,20 @@
-from flask import Flask, render_template, request, render_template_string, jsonify, redirect, url_for, flash
+from flask import (
+    Flask, render_template, request, jsonify, 
+    redirect, url_for, flash, session)
 import time
 import os
 import pymongo
+from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
-app = Flask(__name__)  
-app.secret_key = 'test'
+app = Flask(__name__) 
+
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY", "TEST")
+
 MONGO_URI = os.environ.get("MONGO_URI")
 DATABASE = "loginInfo"
 COLLECTION = "Users"
@@ -142,8 +150,19 @@ def failLevel():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     time.sleep(0.1)
-    data = request.form
-    print(data)
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password1 = request.form.get('password1')
+        usernameCheck = coll.find_one({"username": username.lower(),})
+        if usernameCheck:
+            if check_password_hash(usernameCheck["password"], password1):
+                session["user"] = request.form.get("username").lower()
+                flash("Welcome Back! {}".format(request.form.get("username")), category='pass')
+                return redirect(url_for("index"))
+            else:
+                flash("username and/or password is incorrect", category="fail")
+
+
     return render_template('login.html',)
 
 
@@ -156,7 +175,7 @@ def signup():
         name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        usernameCheck = coll.find_one({"username": username,})
+        usernameCheck = coll.find_one({"username": username.lower(),})
         if password1 != password2:
             flash('Passwords do not match', category='fail')
         elif len(password1) < 5:
@@ -165,12 +184,14 @@ def signup():
             flash('username exists in the database', category='fail') 
         else:
             flash('Account created!', category='pass')
+            password = generate_password_hash(password1)
             newInfo = {
                     "name": name,
                     "username": username,
-                    "password": password1 
+                    "password": password 
             }
             coll.insert_one(newInfo)
+            session["user"] = request.form.get("username").lower()
             return render_template('index.html')
 
 

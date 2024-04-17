@@ -5,14 +5,29 @@
 {% endblock %}
 
 {% block body %}
-<section>
-    <h1 id="title">You have been Hung!!!!</h1>
-    <div id="title-text-container"><p id="title-text">Bitten off more than you can chew eh? try again?</p></div>
-    <div id="home-buttons">
-        <button class="home-button">Another game with this library?</button>
-        <button class="home-button">pick another library?</button>
-    </div>
-    <div id="information-button"></div>
-    <div id="dadtabase-update"></div>
+<div class="location-title">
+    <h1 id="title">Coming back for more!?</h1>
+</div>
+<section id="form-image-outer">
+    <div id="form-background">
+        <div id="form">
+            <h2>Your Details</h2>
+            <form method="POST">
+                <label for="Username" class="form-label"><strong>Username:</strong></label>
+                <input name="username" id="Username" class="form-control" type="text" minlength="4" maxlength="15"
+                    pattern="^[a-zA-Z0-9]{4,15}$" placeholder="Username" required>
+                <br>
+                <label for="password1"><strong>Password:</strong></label>
+                <br>
+                <input name="password1" id="password1" placeholder="Password" class="form-control" minlength="4" maxlength="15"
+                pattern="^[a-zA-Z0-9]{4,15}$" required>
+                <br>
+                <p Class="center-align">
+                    First time?  <a href="{{url_for('signup')}}" class="purple-text text-darken-4">sign up here!</a>
+                </p>
+                <button type="submit" class="btn btn-dark">Login!</button>
+                <input type="reset" value="Reset Form" class="btn btn-dark">
+            </form>
+        </div>
 </section>
 {% endblock %}

@@ -18,16 +18,21 @@
                     <input name='name'Id="firstname" class="form-control" type="text" placeholder="First name" required>
                     <br>
                     <label for="Username" class="form-label"><strong>Username:</strong></label>
-                    <input name="username" id="Username" class="form-control" type="text" placeholder="Username" required>
+                    <input name="username" id="Username" class="form-control" type="text" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z0-9]{4,15}$" placeholder="Username" required>
                     <br>
                     <label for="password1"><strong>Password:</strong></label>
                     <br>
-                    <input name="password1" id="password1" placeholder="Password" class="form-control" required></input>
+                    <input name="password1" id="password1" placeholder="Password" class="form-control" minlength="4" maxlength="15"
+                    pattern="^[a-zA-Z0-9]{4,15}$" required>
                     <br>
                     <label for="password2"><strong>Confirm Password:</strong></label>
                     <br>
-                    <input name="password2" id="password2" placeholder="Confirm Password" class="form-control" required></input>
+                    <input name="password2" id="password2" placeholder="Confirm Password" class="form-control" required>
                     <br>
+                    <p Class="center-align">
+                        Have an account?  <a href="{{url_for('login')}}" class="purple-text text-darken-4">Sign in here!</a>
+                    </p>
                     <button type="submit" class="btn btn-dark">Signup!</button>
                     <input type="reset" value="Reset Form" class="btn btn-dark">
                 </form>
