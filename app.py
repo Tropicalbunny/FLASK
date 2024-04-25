@@ -65,7 +65,6 @@ def hangman(guess):
         print("wrong")
         update_image()
         if guessesLeft == 0:
-            print("iwork")
             gameOver = 1
             return gameOver
 
@@ -158,7 +157,7 @@ def login():
             if check_password_hash(usernameCheck["password"], password1):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome Back! {}".format(request.form.get("username")), category='pass')
-                return redirect(url_for("index"))
+                return redirect(url_for("profile", username=username))
             else:
                 flash("username and/or password is incorrect", category="fail")
 
@@ -192,10 +191,17 @@ def signup():
             }
             coll.insert_one(newInfo)
             session["user"] = request.form.get("username").lower()
-            return render_template('index.html')
+            return render_template("profile.html", username=username)
 
 
     return render_template('signup.html', boolean=True)
+
+
+@app.route("/profile/<username>", methods=["GET","POST"])
+def profile(username): 
+    username = coll.find_one({"username": session["user"]})["username"]
+    return render_template("profile.html", username=username)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

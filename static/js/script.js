@@ -68,14 +68,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let infoOpen = document.getElementById('info-open');
     let infoContainer = document.getElementById('info-container');
     let infoClose = document.getElementById('info-close');
+    let popupClose = document.getElementsByClassName('close');
+    let warning = document.getElementById('warning');
     infoOpen.addEventListener('click', function(){
         infoContainer.style.display = 'block';
     })
     
     infoClose.addEventListener('click', function(){
         infoContainer.style.display = 'none';
+        
+    })
+    popupClose.addEventListener('click', function(){
+        warning.style.display = 'none';
     })
 
     
 });
-
