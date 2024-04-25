@@ -164,7 +164,6 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 #hangman-image-outer {
     width:410px ;
     height: 410px ;
-
     margin: auto;
     margin-top: 50px;
 }
@@ -190,12 +189,12 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     margin-top: 30px;
     width:400px;
     height:150px;
-    font-size: xx-large;
+    font-size: x-large;
     text-align: center;
 }
 .guess-button{
-    width: 25px;
-    height: 25px;
+    width: 35px;
+    height: 35px;
 
 }
 .guess-button:hover{

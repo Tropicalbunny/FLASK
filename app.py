@@ -157,7 +157,7 @@ def login():
             if check_password_hash(usernameCheck["password"], password1):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome Back! {}".format(request.form.get("username")), category='pass')
-                return redirect(url_for("profile", username=username))
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 flash("username and/or password is incorrect", category="fail")
 
@@ -191,17 +191,25 @@ def signup():
             }
             coll.insert_one(newInfo)
             session["user"] = request.form.get("username").lower()
-            return render_template("profile.html", username=username)
+            return redirect(url_for("profile", username=session["user"]))
 
 
     return render_template('signup.html', boolean=True)
+
+# used to logout the game
+@app.route("/logout")
+def logout():
+    flash("you have been logged out", category="pass")
+    session.pop("user")
+    return redirect(url_for("login"))
 
 
 @app.route("/profile/<username>", methods=["GET","POST"])
 def profile(username): 
     username = coll.find_one({"username": session["user"]})["username"]
-    return render_template("profile.html", username=username)
-
+    if session["user"]:
+        return render_template("profile.html", username=session["user"])
+    return render_template(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
