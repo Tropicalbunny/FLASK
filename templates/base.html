@@ -28,15 +28,27 @@
                 <nav class="navbar navbar-expand">
                     <div class=" navbar-collapse collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto" id="menu-container">
-                            <li class="nav-item ">
-                                <a class="nav-link small-screen link-hover" href="/">Home</a>
-                            </li>
-                            <li class="nav-item navspacing">
-                                <a class="nav-link small-screen activesheet link-hover" href="/gameboard">Game</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link small-screen link-hover" href="{{url_for('login')}}">Sign In</a>
-                            </li>
+                            {% if session.user %}
+                                <li class="nav-item ">
+                                    <a class="nav-link small-screen link-hover" href="{{url_for('profile', username=session['user'])}}">Home</a>
+                                </li>
+                                <li class="nav-item navspacing">
+                                    <a class="nav-link small-screen link-hover" href="/gameboard">Game</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link small-screen link-hover" href="{{url_for('logout')}}">Log Out</a>
+                                </li>                            
+                            {% else %}
+                                <li class="nav-item ">
+                                    <a class="nav-link small-screen link-hover" href="/">Home</a>
+                                </li>
+                                <li class="nav-item navspacing">
+                                    <a class="nav-link small-screen  link-hover" href="/gameboard">Game</a>
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link small-screen link-hover" href="{{url_for('login')}}">Sign In</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </nav>
