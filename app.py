@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
-app.secret_key = os.environ.get("SECRET_KEY", "TEST")
+app.secret_key = os.environ.get("SECRET_KEY")
 
 MONGO_URI = os.environ.get("MONGO_URI")
 DATABASE = "loginInfo"
@@ -211,5 +211,10 @@ def profile(username):
         return render_template("profile.html", username=session["user"])
     return render_template(url_for("login"))
 
+
+@app.route("/userlibrary/<username>", methods=["GET", "POST"])
+def userlibrary(username):
+    username = coll.find_one({"username": session["user"]})["username"]
+    return render_template("userlibrary.html", username=session['user'])
 if __name__ == "__main__":
     app.run(debug=True)

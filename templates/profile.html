@@ -7,4 +7,14 @@
 {% block body %}
 <h1 id="title">{{ username }}'s profile</h1>
 <div id="title-text-container"><p id="title-text">Hangman is a knowledge based game, how many words do you know in the english dictionary? can you guess them before you..."hang the man"</p></div>
+
+<section>
+        <div id="home-buttons">
+        <a href="{{url_for('userlibrary', username=session['user'])}}"><button class="home-button">Your Libraries</button></a>
+        <button class="home-button">information</button>
+        <button class="home-button">Play Random game</button>
+    </div>
+    <div id="information-button"></div>
+    <div id="dadtabase-update"></div>
+</section>
 {% endblock %}
