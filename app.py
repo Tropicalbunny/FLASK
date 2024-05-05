@@ -18,6 +18,8 @@ app.secret_key = os.environ.get("SECRET_KEY")
 MONGO_URI = os.environ.get("MONGO_URI")
 DATABASE = "loginInfo"
 COLLECTION = "Users"
+LIBRARY = "lib"
+WORDS = "words"
 #code to run main game
 
 databaseWord = "testwordc"
@@ -39,7 +41,7 @@ conn = mongo_connect(MONGO_URI)
 
 
 coll = conn[DATABASE][COLLECTION]
-
+lib = conn[LIBRARY][WORDS]
 
 documents = coll.find()
 
@@ -215,6 +217,8 @@ def profile(username):
 @app.route("/userlibrary/<username>", methods=["GET", "POST"])
 def userlibrary(username):
     username = coll.find_one({"username": session["user"]})["username"]
-    return render_template("userlibrary.html", username=session['user'])
+    words = lib.find_one({"username": session["user"]})["word"]
+    print(words)
+    return render_template("userlibrary.html", username=session['user'], words = words)
 if __name__ == "__main__":
     app.run(debug=True)
