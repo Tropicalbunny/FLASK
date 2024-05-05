@@ -5,19 +5,34 @@
 {% endblock %}
 
 {% block body %}
-{% for set in libraries %}
+{% for title, words in words.items() %}
 <div class="accordion">
     <div class="accordion-item">
-      <h2 class="accordion-header" id="headingOne">
+      <h2 class="accordion-header" id="heading{{ loop.index }}">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" 
             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          {{ set.title }}
+        {{ title }}
         </button>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
         <div class="accordion-body">
             Words in Library: <br>
-        {{ set.word }}    
+            {% for word in words %}
+            <div class="word-holder">
+             <div class="word-box"> <li>{{ word }}</li> </div>
+              <div class="word-button-box word-box"><button>edit</button><button>delete</button></div>
+            </div>
+            {% endfor %}
+            <hr>
+              <form class="word-holder">
+                <div class="word-box">
+                  <input name="word" id="word" class="form-control" type="text" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z]" placeholder="Add word" style="width: 30%;" required>
+                </div>
+                <div class="word-button-box word-box">
+                        <button>addword</button>
+                </div>
+              </form>
         </div>
       </div>
     </div>

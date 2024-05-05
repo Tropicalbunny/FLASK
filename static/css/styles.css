@@ -236,3 +236,16 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     font-size: xx-large;
     color: antiquewhite;
 }
+/* container to sit the buttons and word inline*/
+.word-holder{
+    height: 30px;
+    width: 100%;
+    margin: 5px;
+    display: flex;
+}
+.word-button-box{
+    text-align: right;
+}
+.word-box{
+    width: 49%;
+}

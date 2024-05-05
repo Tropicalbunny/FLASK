@@ -213,12 +213,17 @@ def profile(username):
         return render_template("profile.html", username=session["user"])
     return render_template(url_for("login"))
 
-
+#finds all the user assosiated libraries.
 @app.route("/userlibrary/<username>", methods=["GET", "POST"])
 def userlibrary(username):
     username = coll.find_one({"username": session["user"]})["username"]
-    words = lib.find_one({"username": session["user"]})["word"]
-    print(words)
-    return render_template("userlibrary.html", username=session['user'], words = words)
+    words = {}
+    for item in lib.find({"username": session["user"]}):
+        title = item["title"]
+        word = item["word"]
+        if title not in words:
+            words[title] = []
+        words[title].append(word)
+    return render_template("userlibrary.html", username=session['user'], words=words )
 if __name__ == "__main__":
     app.run(debug=True)
