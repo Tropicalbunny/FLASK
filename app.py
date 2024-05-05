@@ -211,7 +211,7 @@ def profile(username):
     username = coll.find_one({"username": session["user"]})["username"]
     if session["user"]:
         return render_template("profile.html", username=session["user"])
-    return render_template(url_for("login"))
+    return redirect(url_for("login"))
 
 #finds all the user assosiated libraries.
 @app.route("/userlibrary/<username>", methods=["GET", "POST"])
@@ -225,5 +225,23 @@ def userlibrary(username):
             words[title] = []
         words[title].append(word)
     return render_template("userlibrary.html", username=session['user'], words=words )
+
+#adding words to a library
+@app.route('/addword', methods=["POST"])
+def addword():
+    print("check1")
+    username = session['user']
+    word = request.form.get('word')
+    title = request.form.get('title')
+    newword = {
+        "username": username,
+        "word": word,
+        "title": title, 
+    }
+    lib.insert_one(newword)
+    print(newword)
+    return redirect(url_for("userlibrary", username=session['user']))
+
+
 if __name__ == "__main__":
     app.run(debug=True)

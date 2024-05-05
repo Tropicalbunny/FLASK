@@ -24,13 +24,14 @@
             </div>
             {% endfor %}
             <hr>
-              <form class="word-holder">
+              <form class="word-holder" action="/addword" method="POST">
                 <div class="word-box">
+                  <input type="hidden" name="title" id="title" value="{{ title }}">
                   <input name="word" id="word" class="form-control" type="text" minlength="4" maxlength="15"
-                        pattern="^[a-zA-Z]" placeholder="Add word" style="width: 30%;" required>
+                        pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" style="width: 30%;" required>
                 </div>
                 <div class="word-button-box word-box">
-                        <button>addword</button>
+                        <input type="submit" value="add word">
                 </div>
               </form>
         </div>
