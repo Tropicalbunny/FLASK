@@ -247,5 +247,10 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     text-align: right;
 }
 .word-box{
-    width: 49%;
+    width: 33%;
+    display: flex;
+}
+.add-word{
+    width: 120px;
+    border-radius: 5px;
 }

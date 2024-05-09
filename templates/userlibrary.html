@@ -20,7 +20,16 @@
             {% for word in words %}
             <div class="word-holder">
              <div class="word-box"> <li>{{ word }}</li> </div>
-              <div class="word-button-box word-box">
+              <div class="word-box">
+                <form action="/editword" method="POST">
+                  <input type="hidden" name="title" id="title" value="{{ title }}">
+                  <input type="hidden" name="word" id="word" value="{{ word }}">
+                  <input name="word2" id="word2" class="add-word" type="text" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z]{4,15}$" placeholder="Upated word" required>
+                        <button type="submit">Update</button>
+                </form>
+              </div>
+              <div class="word-box">
                 <button>edit</button>
                 <form action="/delword" method="POST">
                   <input type="hidden" name="title" id="title" value="{{ title }}">
@@ -28,14 +37,15 @@
                   <button type="submit">delete</button>
                 </form>
               </div>
+
             </div>
             {% endfor %}
             <hr>
               <form class="word-holder" action="/addword" method="POST">
                 <div class="word-box">
                   <input type="hidden" name="title" id="title" value="{{ title }}">
-                  <input name="word" id="word" class="form-control" type="text" minlength="4" maxlength="15"
-                        pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" style="width: 30%;" required>
+                  <input name="word" id="word" class=" add-word" type="text" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
                 </div>
                 <div class="word-button-box word-box">
                         <input type="submit" value="add word">

@@ -249,6 +249,15 @@ def delword():
     return redirect(url_for("userlibrary", username=session['user']))
 
 
+@app.route('/editword', methods=['POST'])
+def editword():
+    word = request.form.get('word')
+    word2 = request.form.get('word2')
+    title = request.form.get('title')
+    lib.update_one({'word': word, 'title': title,}, {'$set': {'word': word2}})
+    return redirect(url_for("userlibrary", username=session['user']))
+
+
 
 
 
