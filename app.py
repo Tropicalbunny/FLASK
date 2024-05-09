@@ -255,6 +255,26 @@ def editword():
     word2 = request.form.get('word2')
     title = request.form.get('title')
     lib.update_one({'word': word, 'title': title,}, {'$set': {'word': word2}})
+    flash("word updated sucessfully", category="pass")
+    return redirect(url_for("userlibrary", username=session['user']))
+
+
+@app.route('/addtitle', methods=["POST"])
+def addtitle():
+    username = session['user']
+    word = request.form.get('word')
+    title = request.form.get('title')
+    wordCheck = lib.find_one({"title":title,})
+    newword = {
+        "username": username,
+        "word": word,
+        "title": title, 
+    }
+    if wordCheck:
+        flash("title already exists please use another", category="fail")
+    else:
+        lib.insert_one(newword)
+        flash("new Library created sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
 
 

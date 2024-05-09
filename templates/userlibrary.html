@@ -56,4 +56,15 @@
     </div>
 </div>
 {% endfor %}
+<div>
+  <form action="/addtitle" method="POST">
+    <label for="title">Add a new title</label>
+    <input  name="title" id="title" class="add-word" placeholder="add title" type="text" minlength="4" maxlength="15"
+    pattern="^[a-zA-Z]{4,15}$" required>
+    <label for="word">Add your first word</label>
+    <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
+          pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
+          <button type="submit">Add new Library</button>
+  </form>
+</div>
 {% endblock %}
