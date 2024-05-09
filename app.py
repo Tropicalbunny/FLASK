@@ -241,9 +241,11 @@ def addword():
     print(newword)
     return redirect(url_for("userlibrary", username=session['user']))
 
-@app.route('/delword/<word_id>', methods=['POST'])
-def delword(word_id):
-    lib.delete_one({'_id': word_id})
+@app.route('/delword/', methods=['POST'])
+def delword():
+    word = request.form.get('word')
+    title = request.form.get('title')
+    lib.delete_one({'word': word, 'title': title,})
     return redirect(url_for("userlibrary", username=session['user']))
 
 

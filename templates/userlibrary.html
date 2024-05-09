@@ -22,7 +22,9 @@
              <div class="word-box"> <li>{{ word }}</li> </div>
               <div class="word-button-box word-box">
                 <button>edit</button>
-                <form action="/delword/{{ word._id }}" method="POST">
+                <form action="/delword" method="POST">
+                  <input type="hidden" name="title" id="title" value="{{ title }}">
+                  <input type="hidden" name="word" id="word" value="{{ word }}">
                   <button type="submit">delete</button>
                 </form>
               </div>
