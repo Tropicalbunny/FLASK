@@ -229,7 +229,6 @@ def userlibrary(username):
 #adding words to a library
 @app.route('/addword', methods=["POST"])
 def addword():
-    print("check1")
     username = session['user']
     word = request.form.get('word')
     title = request.form.get('title')
@@ -241,6 +240,17 @@ def addword():
     lib.insert_one(newword)
     print(newword)
     return redirect(url_for("userlibrary", username=session['user']))
+
+@app.route('/delword/<word_id>', methods=['POST'])
+def delword(word_id):
+    lib.delete_one({'_id': word_id})
+    return redirect(url_for("userlibrary", username=session['user']))
+
+
+
+
+
+
 
 
 if __name__ == "__main__":

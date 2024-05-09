@@ -20,7 +20,12 @@
             {% for word in words %}
             <div class="word-holder">
              <div class="word-box"> <li>{{ word }}</li> </div>
-              <div class="word-button-box word-box"><button>edit</button><button>delete</button></div>
+              <div class="word-button-box word-box">
+                <button>edit</button>
+                <form action="/delword/{{ word._id }}" method="POST">
+                  <button type="submit">delete</button>
+                </form>
+              </div>
             </div>
             {% endfor %}
             <hr>
