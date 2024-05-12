@@ -7,10 +7,9 @@
 {% block body %}
 <section>
     <h1 id="title">You have been Hung!!!!</h1>
-    <div id="title-text-container"><p id="title-text">Bitten off more than you can chew eh? try again?</p></div>
+    <div id="title-text-container"><p id="title-text">Bitten off more than you can chew eh?</p></div>
     <div id="home-buttons">
-        <button class="home-button">Another game with this library?</button>
-        <button class="home-button">pick another library?</button>
+        <a href="{{url_for('viewlib')}}"><button class="home-button">Pick another Library</button></a>
     </div>
     <div id="information-button"></div>
     <div id="dadtabase-update"></div>

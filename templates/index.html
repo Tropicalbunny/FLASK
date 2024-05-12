@@ -7,11 +7,17 @@
 {% block body %}
 <!-- information screen-->
 <section>
-    <h1 id="title">Hangman</h1>
-    <div id="title-text-container"><p id="title-text">Hangman is a knowledge based game, how many words do you know in the english dictionary? can you guess them before you..."hang the man"</p></div>
+    <div id="title-text-container">
+        <p id="title-text">
+            Hangman is a knowledge based game, 
+            how many words do you know in the english dictionary? 
+            can you guess them before you..."hang the man"
+        </p>
+    </div>
     <div id="home-buttons">
-        <a href="/gameboard"><button class="home-button">Play Random game</button></a>
+        <a href="{{url_for('viewlib')}}"><button class="home-button">Pick Library</button></a>
         <button class="home-button">information</button>
+        <a class="nav-link small-screen link-hover" href="{{url_for('login')}}"><button class="home-button">Sign in</button></a>
     </div>
 </section>
 {% endblock %}

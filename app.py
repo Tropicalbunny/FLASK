@@ -144,7 +144,6 @@ def start():
         for letter in databaseWord:
             correctLetters += "_"
             correctLetters += " "
-            print(databaseWord)
         return redirect(url_for("gameboard"))
     else:
         flash('no words exist in database', category="fail")

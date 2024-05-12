@@ -103,8 +103,8 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .home-button{
     text-align: center;
     border-radius: 15px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 50px;
 }
 .home-button:hover{
     background-color: #8422D0;
@@ -285,4 +285,21 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     width: 900px;
     height: inherit;
     display: flex;
+}
+@media screen and (max-width: 768px) {
+
+    /* reduces spacing in nav bar for smaller screens */
+    .navspacing {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+@media screen and (max-width: 495px) {
+    /* navbar tweaks to sit better on smaller devices */
+    .navspacing {
+        padding: 0;
+        }
+    .container{
+        padding: 1px;
+    }
 }

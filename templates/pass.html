@@ -7,12 +7,11 @@
 {% block body %}
 <section>
     <h1 id="title">You Guessed the word!!</h1>
-    <div id="title-text-container"><p id="title-text">Congratulations, you know your words</p></div>
-    <div id="home-buttons">
-        <button class="home-button">Another game with this library?</button>
-        <button class="home-button">pick another library?</button>
+    <div id="title-text-container">
+        <p id="title-text">Congratulations, you know your words</p>
     </div>
-    <div id="information-button"></div>
-    <div id="dadtabase-update"></div>
+    <div id="home-buttons">
+        <a href="{{url_for('viewlib')}}"><button class="home-button">Pick another Library</button></a>
+    </div>
 </section>
 {% endblock %}

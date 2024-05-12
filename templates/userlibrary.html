@@ -21,6 +21,7 @@
             <div class="word-holder">
              <div class="word-box"> <li>{{ word }}</li> </div>
               <div class="word-box">
+                <!-- editing from database-->
                 <form action="/editword" method="POST">
                   <input type="hidden" name="title" id="title" value="{{ title }}">
                   <input type="hidden" name="word" id="word" value="{{ word }}">
@@ -29,8 +30,8 @@
                         <button type="submit">Update</button>
                 </form>
               </div>
+              <!-- deleting from database-->
               <div class="word-box">
-                <button>edit</button>
                 <form action="/delword" method="POST">
                   <input type="hidden" name="title" id="title" value="{{ title }}">
                   <input type="hidden" name="word" id="word" value="{{ word }}">
@@ -41,6 +42,7 @@
             </div>
             {% endfor %}
             <hr>
+            <!--add word to library-->
               <form class="word-holder" action="/addword" method="POST">
                 <div class="word-box">
                   <input type="hidden" name="title" id="title" value="{{ title }}">
@@ -57,6 +59,7 @@
 </div>
 {% endfor %}
 <div>
+  <!-- add a new library-->
   <form action="/addtitle" method="POST">
     <label for="title">Add a new title</label>
     <input  name="title" id="title" class="add-word" placeholder="add title" type="text" minlength="4" maxlength="15"

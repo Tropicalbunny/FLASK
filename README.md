@@ -1,39 +1,183 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Hangman
 
-Welcome,
+## Back-end development
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+---
+description
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **August 30th, 2023**
+Live Site
 
-## Codeanywhere Reminders
+## Table of content
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+- [UX](#ux)
+  - [User stories](#user-stories)
+    - [New User Goals](#new-user-goals)
+    - [Returning User Goals](#returning-user-goals)
+  - [Project Goals](#project-goals)
+  - [Business Goals](#business-goals)
+  - [Minimum Acceptance Criteria](#minimum-acceptance-criteria)
+- [Development](#development)
+  - [Inital Idea](#inital-idea)
+  - [Final Idea](#final-idea)
+    - [Notable Design Decisions](#notable-design-decisions)
+  - [Testing](#testing)
+    - [Pre code Testing](#pre-code-testing)
+    - [During Code Testing](#during-code-testing)
+    - [Final Testing](#final-testing)
+      - [User Comments](#user-comments)
+      - [Personal Testing](#personal-testing)
+  - [Features implemented](#features-implemented)
+    - [Nav Bar](#nav-bar)
+    - [Landing Page](#landing-page)
+    - [Location Pages](#location-pages)
+    - [Contact us page](#contact-us-page)
+    - [About us](#about-us)
+  - [Planned Features](#planned-features)
+  - [Technologies Used](#technologies-used)
+  - [Issues](#issues)
+    - [Known Bugs](#known-bugs)
+    - [Fixed Bugs](#fixed-bugs)
+  - [Deployment](#deployment)
+    - [Process](#process)
+    - [Enccounted Issues](#encounted-issues)
+- [Credits](#credits)
 
-`python3 -m http.server`
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
-
-`http_server`
-
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
-
-A button should appear to click: _Open Preview_ or _Open Browser_.
-
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## UX
 
 ---
 
-Happy coding!
+### User Stories
+
+
+
+#### New User Goals
+
+
+#### Returning User Goals
+
+
+
+### Project Goals
+
+
+
+### Business Goals
+
+
+
+### Minimum Acceptance Criteria
+
+
+
+## Development
+
+---
+
+### Inital idea
+
+
+
+### Final Idea
+
+#### Notable Design Decisions.
+
+
+## Testing
+
+---
+
+### Pre code Testing
+
+
+### During Code Testing
+
+
+### Final Testing
+
+#### User Comments
+
+
+#### Personal Testing
+
+
+
+## Features Implemented
+
+
+
+### Nav Bar
+
+
+
+### Landing Page
+
+
+
+### Location Pages
+
+
+
+### Contact us page
+
+
+### About us
+
+
+
+## Planned Features
+
+
+
+## Technologies Used
+
+- HTML 5
+- CSS 3
+- JAVASCRIPT
+- Bootstrap v5
+- Font awesome
+- Google fonts
+- Github
+- gitpod
+- Figma for design
+- Flask
+- Python3
+- MongoDB
+
+## Issues
+
+### Known Bugs
+
+To my best knowledge i have crunched down all bugs i have found
+
+### fixed Bugs
+
+
+## Deployment
+
+---
+
+### Process
+
+
+
+### Encounted Issues
+
+
+## Credits
+
+---
+
+### Images
+
+
+- Hanne Jessen, for image designs
+
+### Code aid
+
+- W3C schools for the Gallery
+- Bootstrap v5 
+
+### Testing
+
+- My Team At PML
+- Family Programmers

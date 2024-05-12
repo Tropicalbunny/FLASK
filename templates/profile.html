@@ -10,11 +10,8 @@
 
 <section>
         <div id="home-buttons">
-        <a href="{{url_for('userlibrary', username=session['user'])}}"><button class="home-button">Your Libraries</button></a>
-        <button class="home-button">information</button>
-        <button class="home-button">Play Random game</button>
-    </div>
-    <div id="information-button"></div>
-    <div id="dadtabase-update"></div>
+            <a href="{{url_for('userlibrary', username=session['user'])}}"><button class="home-button">Your Libraries</button></a>
+            <a href="{{url_for('viewlib')}}"><button class="home-button">View all Libraries</button></a>
+        </div>
 </section>
 {% endblock %}
