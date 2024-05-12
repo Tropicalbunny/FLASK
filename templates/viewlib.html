@@ -13,9 +13,10 @@
                 <h3>{{ title }}</h3>
             </div>
             <div class="view-inner-button word-button-box">
-                <form action="/start"></form>
-                <input type="hidden" name="title" id="title" value="{{ title }}">
-                <button type="submit" >Play </button>
+                <form action="/start" method="post">
+                    <input type="hidden" name="title" id="title" value="{{ title }}">
+                    <button type="submit" >Play </button>
+                </form>
             </div>
         </div>
 {% endfor %}

@@ -4,6 +4,7 @@ from flask import (
 import time
 import os
 import pymongo
+import random
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
@@ -44,15 +45,7 @@ conn = mongo_connect(MONGO_URI)
 coll = conn[DATABASE][COLLECTION]
 lib = conn[LIBRARY][WORDS]
 
-documents = coll.find()
 
-for doc in documents:
-    print(doc)
-
-
-for letter in databaseWord:
-        correctLetters += "_"
-        correctLetters += " "
 # main function to run the game
 def hangman(guess):
     global guessesLeft
@@ -61,11 +54,8 @@ def hangman(guess):
     global gameOver
     eachGuessedLetter = eachGuessedLetter + guess
     correctLetters = ""
-    if guess in databaseWord:
-        print("Correct")
-    else:
+    if guess not in databaseWord:
         guessesLeft -= 1
-        print("wrong")
         update_image()
         if guessesLeft == 0:
             gameOver = 1
@@ -84,9 +74,6 @@ def hangman(guess):
     if all(letter in eachGuessedLetter for letter in databaseWord):
         gameOver = 2
         return gameOver
-    
-    print(guessesLeft)
-    print(eachGuessedLetter)
 
 
 # used to create the connection for the home screen
@@ -117,6 +104,52 @@ def buttonpress():
 def gameboard():
     time.sleep(0.1)
     return render_template('gameboard.html', displayedLetters = correctLetters,)
+
+
+# route to browse and choose a library.
+@app.route('/viewlib', methods=['GET', 'POST'])
+def viewlib():
+    titles = set()
+    for item in lib.find({}):
+        title = item.get("title")
+        if title:
+            titles.add(title)
+    return render_template("viewlib.html" , titles=titles)
+
+
+# this is to start the game using the selected library
+@app.route('/start', methods=["GET", "POST"])
+def start():
+    global guessesLeft
+    global eachGuessedLetter
+    global correctLetters
+    global gameOver
+    global databaseWord
+
+    guessesLeft = 7
+    eachGuessedLetter = ""
+    correctLetters = ""
+    gameOver = 0
+    wordSet = set()
+    title = request.form.get('title')
+
+    for item in lib.find({"title": title}):
+        word = item.get("word")
+        if word:
+            wordSet.add(word)
+    print(wordSet)
+    wordList = list(wordSet) 
+    if len(wordList) > 0:
+        databaseWord = random.choice(wordList)
+        for letter in databaseWord:
+            correctLetters += "_"
+            correctLetters += " "
+            print(databaseWord)
+        return redirect(url_for("gameboard"))
+    else:
+        flash('no words exist in database', category="fail")
+        return redirect(url_for("viewlib"))
+
 
 
 # updates the image bases on how many guesses are left, sends the data to js for processing
@@ -233,13 +266,17 @@ def addword():
     username = session['user']
     word = request.form.get('word')
     title = request.form.get('title')
+    wordCheck = lib.find_one({'word': word, 'title': title,})
     newword = {
         "username": username,
         "word": word,
         "title": title, 
     }
-    lib.insert_one(newword)
-    print(newword)
+    if wordCheck:
+        flash('word is already in your library', category="fail")
+    else:
+        lib.insert_one(newword)
+        print(newword)
     return redirect(url_for("userlibrary", username=session['user']))
 
 # route to delete word in database
@@ -256,8 +293,12 @@ def editword():
     word = request.form.get('word')
     word2 = request.form.get('word2')
     title = request.form.get('title')
-    lib.update_one({'word': word, 'title': title,}, {'$set': {'word': word2}})
-    flash("word updated sucessfully", category="pass")
+    wordCheck = lib.find_one({'word': word, 'title': title,})
+    if wordCheck:
+        flash('word is already in your library', category="fail")
+    else:
+        lib.update_one({'word': word, 'title': title,}, {'$set': {'word': word2}})
+        flash("word updated sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
 
 # route to add a new library to the database
@@ -279,16 +320,6 @@ def addtitle():
         flash("new Library created sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
 
-
-# route to browse and choose a library.
-@app.route('/viewlib', methods=['GET', 'POST'])
-def viewlib():
-    titles = set()
-    for item in lib.find({}):
-        title = item.get("title")
-        if title:
-            titles.add(title)
-    return render_template("viewlib.html" , titles=titles)
 
 
 
