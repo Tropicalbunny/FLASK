@@ -34,7 +34,7 @@
                                     <a class="nav-link small-screen link-hover" href="{{url_for('profile', username=session['user'])}}">Home</a>
                                 </li>
                                 <li class="nav-item navspacing">
-                                    <a class="nav-link small-screen link-hover" href="/gameboard">Libraries</a>
+                                    <a class="nav-link small-screen link-hover" href="{{url_for('viewlib')}}">Libraries</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link small-screen link-hover" href="{{url_for('logout')}}">Log Out</a>
@@ -44,7 +44,7 @@
                                     <a class="nav-link small-screen link-hover" href="/">Home</a>
                                 </li>
                                 <li class="nav-item navspacing">
-                                    <a class="nav-link small-screen  link-hover" href="/gameboard">Libraries</a>
+                                    <a class="nav-link small-screen  link-hover" href="{{url_for('viewlib')}}">Libraries</a>
                                 </li>
                                 <li class="nav-item ">
                                     <a class="nav-link small-screen link-hover" href="{{url_for('login')}}">Sign In</a>

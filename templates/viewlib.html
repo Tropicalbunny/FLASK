@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="view-outer">
+    <div class="view-canvas">
+{% for title in titles %}
+        <div class="view-box">
+            <div class="view-inner">
+                <h3>{{ title }}</h3>
+            </div>
+            <div class="view-inner-button word-button-box">
+                <form action="/start"></form>
+                <input type="hidden" name="title" id="title" value="{{ title }}">
+                <button type="submit" >Play </button>
+            </div>
+        </div>
+{% endfor %}
+    </div>
+</div>
+{% endblock %}

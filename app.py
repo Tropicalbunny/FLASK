@@ -28,6 +28,7 @@ eachGuessedLetter = ""
 correctLetters = ""
 value = ""
 gameOver = 0
+
 def mongo_connect(url):
     try:
         conn = pymongo.MongoClient(url)
@@ -39,7 +40,7 @@ def mongo_connect(url):
 
 conn = mongo_connect(MONGO_URI)
 
-
+# two data base connections, coll is the main login sys, and lib is for all the libraries 
 coll = conn[DATABASE][COLLECTION]
 lib = conn[LIBRARY][WORDS]
 
@@ -124,9 +125,9 @@ def update_image():
     global guessesLeft
     imageUpdate = guessesLeft
     return jsonify(imageUpdate)
+
+
 # used to tell java if the game is running, passed or failed
-
-
 @app.route('/isGameOver', methods=["GET", "POST"])
 def game_over():
     global gameOver
@@ -205,7 +206,7 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
-
+# Route for user profile
 @app.route("/profile/<username>", methods=["GET","POST"])
 def profile(username): 
     username = coll.find_one({"username": session["user"]})["username"]
@@ -241,6 +242,7 @@ def addword():
     print(newword)
     return redirect(url_for("userlibrary", username=session['user']))
 
+# route to delete word in database
 @app.route('/delword/', methods=['POST'])
 def delword():
     word = request.form.get('word')
@@ -248,7 +250,7 @@ def delword():
     lib.delete_one({'word': word, 'title': title,})
     return redirect(url_for("userlibrary", username=session['user']))
 
-
+#route to edit words in database
 @app.route('/editword', methods=['POST'])
 def editword():
     word = request.form.get('word')
@@ -258,7 +260,7 @@ def editword():
     flash("word updated sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
 
-
+# route to add a new library to the database
 @app.route('/addtitle', methods=["POST"])
 def addtitle():
     username = session['user']
@@ -277,6 +279,16 @@ def addtitle():
         flash("new Library created sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
 
+
+# route to browse and choose a library.
+@app.route('/viewlib', methods=['GET', 'POST'])
+def viewlib():
+    titles = set()
+    for item in lib.find({}):
+        title = item.get("title")
+        if title:
+            titles.add(title)
+    return render_template("viewlib.html" , titles=titles)
 
 
 
