@@ -68,7 +68,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 
 /* Form image background styles */
-#form-image-outer {
+#form-section-outer {
     height: 1000px;
     Width: 100%;
     position: relative;
@@ -286,6 +286,40 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     height: inherit;
     display: flex;
 }
+
+/* accordion styles*/
+.accordion-spacing{
+    margin: 5px;
+}
+.accordion-container{
+    margin: auto;
+}
+/* styiling for main form structure */
+#form-outer {
+    width: 100%;
+    text-align: center;
+}
+#add-library-for-outer{
+    width: 350px;
+    text-align: center;
+}
+#add-library-form {
+    width: 350px;
+    background-color: #8422D0c7;
+    padding: 20px;
+    margin: 10px auto;
+    border-radius: 30px;
+    font-size: 100%;
+    display: flex;
+}
+#add-library-submit{
+    text-align: center;
+}
+#add-library-sections{
+    width: 49%;
+}
+
+
 @media screen and (max-width: 768px) {
 
     /* reduces spacing in nav bar for smaller screens */

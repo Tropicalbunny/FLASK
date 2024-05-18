@@ -5,69 +5,93 @@
 {% endblock %}
 
 {% block body %}
-{% for title, words in words.items() %}
-<div class="accordion">
-    <div class="accordion-item">
-      <h2 class="accordion-header" id="heading{{ loop.index }}">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" 
-            data-bs-target="#{{ title }}" aria-expanded="true" aria-controls="collapseOne">
-        {{ title }}
-        </button>
-      </h2>
-      <div id="{{ title }}" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-        <div class="accordion-body">
-            Words in Library: <br>
-            {% for word in words %}
-            <div class="word-holder">
-             <div class="word-box"> <li>{{ word }}</li> </div>
-              <div class="word-box">
-                <!-- editing from database-->
-                <form action="/editword" method="POST">
-                  <input type="hidden" name="title" id="title" value="{{ title }}">
-                  <input type="hidden" name="word" id="word" value="{{ word }}">
-                  <input name="word2" id="word2" class="add-word" type="text" minlength="4" maxlength="15"
-                        pattern="^[a-zA-Z]{4,15}$" placeholder="Upated word" required>
-                        <button type="submit">Update</button>
-                </form>
-              </div>
-              <!-- deleting from database-->
-              <div class="word-box">
-                <form action="/delword" method="POST">
-                  <input type="hidden" name="title" id="title" value="{{ title }}">
-                  <input type="hidden" name="word" id="word" value="{{ word }}">
-                  <button type="submit">delete</button>
-                </form>
-              </div>
-
-            </div>
-            {% endfor %}
-            <hr>
-            <!--add word to library-->
-              <form class="word-holder" action="/addword" method="POST">
+<div class="col-lg-8 accordion-container">
+    {% for title, words in words.items() %}
+    <div class="accordion accordion-spacing">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ loop.index }}">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#{{ title }}" aria-expanded="true" aria-controls="collapseOne">
+          {{ title }}
+          </button>
+        </h2>
+        <div id="{{ title }}" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#{{ title }}">
+          <div class="accordion-body ">
+              Words in Library: <br>
+              {% for word in words %}
+              <div class="word-holder">
+              <div class="word-box"> <li>{{ word }}</li> </div>
                 <div class="word-box">
-                  <input type="hidden" name="title" id="title" value="{{ title }}">
-                  <input name="word" id="word" class=" add-word" type="text" minlength="4" maxlength="15"
-                        pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
+                  <!-- editing from database-->
+                  <form action="/editword" method="POST">
+                    <input type="hidden" name="title" id="title" value="{{ title }}">
+                    <input type="hidden" name="word" id="word" value="{{ word }}">
+                    <input name="word2" id="word2" class="add-word" type="text" minlength="4" maxlength="15"
+                          pattern="^[a-zA-Z]{4,15}$" placeholder="Upated word" required>
+                          <button type="submit">Update</button>
+                  </form>
                 </div>
-                <div class="word-button-box word-box">
-                        <input type="submit" value="add word">
+                <!-- deleting from database-->
+                <div class="word-box">
+                  <form action="/delword" method="POST">
+                    <input type="hidden" name="title" id="title" value="{{ title }}">
+                    <input type="hidden" name="word" id="word" value="{{ word }}">
+                    <button type="submit">delete</button>
+                  </form>
                 </div>
-              </form>
+
+              </div>
+              {% endfor %}
+
+              <hr>
+              <!--add word to library-->
+                <form class="word-holder" action="/addword" method="POST">
+                  <div class="word-box">
+                    <input type="hidden" name="title" id="title" value="{{ title }}">
+                    <input name="word" id="word" class=" add-word" type="text" minlength="4" maxlength="15"
+                          pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
+                  </div>
+                  <div class="word-button-box ">
+                          <input type="submit" value="add word">
+                  </div>
+                </form>
+          </div>
         </div>
       </div>
     </div>
-</div>
-{% endfor %}
-<div>
-  <!-- add a new library-->
-  <form action="/addtitle" method="POST">
-    <label for="title">Add a new title</label>
-    <input  name="title" id="title" class="add-word" placeholder="add title" type="text" minlength="4" maxlength="15"
-    pattern="^[a-zA-Z]{4,15}$" required>
-    <label for="word">Add your first word</label>
-    <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
-          pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
-          <button type="submit">Add new Library</button>
-  </form>
+    {% endfor %}
+
+  <div class="accordion accordion-spacing">
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Add New Library
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form action="/addtitle" method="POST" >
+              <div id="add-library-form">
+                <div class="add-library-sections">
+                  <label for="title">Add a new title:</label>
+                  <br>
+                  <label for="word">Add your first word:</label>
+                </div>
+                <div class="add-library-sections">
+                  <input  name="title" id="title" class="add-word" placeholder="add title" type="text" minlength="4" maxlength="15"
+                  pattern="^[a-zA-Z]{4,15}$" required>
+                  <br>
+                  <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
+                        pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
+                  <button type="submit">Add new Library</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

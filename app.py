@@ -291,7 +291,7 @@ def editword():
     word = request.form.get('word')
     word2 = request.form.get('word2')
     title = request.form.get('title')
-    wordCheck = lib.find_one({'word': word, 'title': title,})
+    wordCheck = lib.find_one({'word': word2, 'title': title,})
     if wordCheck:
         flash('word is already in your library', category="fail")
     else:
