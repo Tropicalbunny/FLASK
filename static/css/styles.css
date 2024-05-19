@@ -105,9 +105,24 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     border-radius: 15px;
     width: 150px;
     height: 50px;
+    background-color: #8422D0;
+    border: none;
+    outline: none;
 }
 .home-button:hover{
+    background-color: #d0229f;
+}
+.update-button{
+    text-align: center;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
     background-color: #8422D0;
+    border: none;
+    outline: none;
+}
+.update-button:hover{
+    background-color: #d0229f;
 }
 #home-buttons{
     text-align: center;
@@ -238,7 +253,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 /* container to sit the buttons and word inline*/
 .word-holder{
-    height: 30px;
+    height: 50px;
     width: 100%;
     margin: 5px;
     display: flex;
@@ -291,6 +306,14 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .accordion-spacing{
     margin: 5px;
 }
+.accordion{
+    --bs-accordion-btn-bg: #8422D0 ;
+    --bs-accordion-active-bg: #8422D0c7;
+    --bs-accordion-bg: rgba(39, 39, 39, 0.699);
+    --bs-accordion-color: white;
+    --bs-accordion-border-radius:0px;
+    --bs-accordion-border-width:0px;
+}
 .accordion-container{
     margin: auto;
 }
@@ -327,6 +350,12 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         padding-left: 10px;
         padding-right: 10px;
     }
+    .word-box{
+        width: auto;
+    }
+    .phone-shrink{
+        width:150px
+    }
 }
 @media screen and (max-width: 495px) {
     /* navbar tweaks to sit better on smaller devices */
@@ -335,5 +364,9 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         }
     .container{
         padding: 1px;
+    }
+    .update-button{
+        width: 60px;
+        height: 40px;
     }
 }
