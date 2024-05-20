@@ -50,7 +50,7 @@
                 <form class="word-holder" action="/addword" method="POST">
                   <div class="word-box">
                     <input type="hidden" name="title" id="title" value="{{ title }}">
-                    <input name="word" id="word" class=" add-word" type="text" minlength="4" maxlength="15"
+                    <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
                           pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
                   </div>
                   <div class="word-button-box ">
@@ -62,7 +62,7 @@
       </div>
     </div>
     {% endfor %}
-
+<!-- add new libraries-->
   <div class="accordion accordion-spacing">
     <div class="accordion" id="accordionExample">
       <div class="accordion-item">
@@ -77,13 +77,13 @@
                 <div class="add-library-sections">
                   <label for="title">Add a new title:</label>
                   <br>
-                  <input  name="title" id="title" class="add-word" placeholder="add title" type="text" minlength="4" maxlength="15"
-                  pattern="^[a-zA-Z]{4,15}$" required>
+                  <input  name="title" id="title" class="add-library-input" placeholder="add title" type="text" minlength="4" maxlength="15"
+                  pattern="^[a-zA-Z-_]{4,15}$" required>
                 </div>
                 <div class="add-library-sections">
                   <label for="word">Add your first word:</label>
                   <br>
-                  <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
+                  <input name="word" id="word" class="add-library-input" type="text" minlength="4" maxlength="15"
                         pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
                   <br>
                   <button type="submit" class="home-button">Add new Library</button>

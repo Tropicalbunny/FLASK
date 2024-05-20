@@ -28,10 +28,10 @@ Live Site
       - [Personal Testing](#personal-testing)
   - [Features implemented](#features-implemented)
     - [Nav Bar](#nav-bar)
-    - [Landing Page](#landing-page)
-    - [Location Pages](#location-pages)
-    - [Contact us page](#contact-us-page)
-    - [About us](#about-us)
+    - [Sign In](#sign-in)
+    - [Sign Up](#sign-up)
+    - [Edit Libraries](#edit-libraries)
+    - [The Gameboard](#the-gameboard)
   - [Planned Features](#planned-features)
   - [Technologies Used](#technologies-used)
   - [Issues](#issues)
@@ -111,26 +111,20 @@ i often used print to show variables that i struggled getting to pass in and out
 
 ## Features Implemented
 
-
-
 ### Nav Bar
+the nav bar is a very simple design incoperating a Logo, the logo is clickable to take you back to the home page(or logged in page if you are logged in)
 
+### Sign In
+the sign in page is used for reoccuring users, so they can create and edit their won libraries to use within the game
 
+### Sign Up
+the sign up page is for if people want to make their own libraries for the game 
 
-### Landing Page
+### Edit Libraries
+edit libraries allows you you edit the database for all CRUD functions. you can view and update words, or create new libraries entirely. but only your ones, you do not have access to ther users libraries
 
-
-
-### Location Pages
-
-
-
-### Contact us page
-
-
-### About us
-
-
+### The Gameboard
+the gameboard is simple is design, i wanted to make it minimalist so it would be simple and easy to use. there is an array of buttons that disapear when you click them. putting your guess through the app. and revealing a letter if it was a correct guess
 
 ## Planned Features
 - create more templates using different launguages, so that a wider base of users can access the website.
@@ -156,9 +150,14 @@ i often used print to show variables that i struggled getting to pass in and out
 
 ### Known Bugs
 
-To my best knowledge i have crunched down all bugs i have found
+- the accordions start closed, but the header wuld indicate they are open, with the off purple and arrow in wrong direction
+- the gameboard briefly refreshes after each button press. it is not seamless. this is because i had to put a delay on the page, the delay is used to give the guess time to be sent through the app before the page is rendered. i did not find another way to do this.
+- the font i have used refuses to be bold, this has caused some discomfort as i would of liked to make the nav items bold so they could be read easier.
 
 ### fixed Bugs
+- the "word was" at the end of the game was not pulling the word through, i forgot to remove the place holder prom the variable.
+- the word was not being randomly selected, i had to rework the code to turn the database information into a python list. to then randomise the word to be guessed.
+- the bug mentioned above where the page was loading before the code would execute, used time to slow the page by 0.1 seconds.
 
 
 ## Deployment
@@ -170,7 +169,7 @@ To my best knowledge i have crunched down all bugs i have found
 
 
 ### Encounted Issues
-
+- heroku was refusing to read the Procfile
 
 ## Credits
 

@@ -20,11 +20,19 @@
             <div id="nav-back">
                         <!--Logo-->
         <div id="navbar">
+            {% if session.user %}
+            <a href="{{url_for('profile', username=session['user'])}}">
+                <div class="slowfade" id="logo-container">
+                    <div id="logo"></div>
+                </div>
+            </a>
+            {% else %}
             <a href="/">
                 <div class="slowfade" id="logo-container">
                     <div id="logo"></div>
                 </div>
             </a>
+            {% endif %}
             <div class="container nav-back">
                 <nav class="navbar navbar-expand">
                     <div class=" navbar-collapse collapse" id="navbarSupportedContent">

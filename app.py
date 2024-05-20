@@ -22,7 +22,7 @@ LIBRARY = "lib"
 WORDS = "words"
 #code to run main game
 
-databaseWord = "testwordc"
+databaseWord = ""
 guessesLeft = 7
 eachGuessedLetter = ""
 correctLetters = ""
@@ -169,14 +169,14 @@ def game_over():
 @app.route('/pass')
 def passLevel():
     time.sleep(0.1)
-    return render_template('pass.html',)
+    return render_template('pass.html', databaseWord=databaseWord)
 
 
 # used to tell the user they have lost
 @app.route('/fail')
 def failLevel():
     time.sleep(0.1)
-    return render_template('fail.html',)
+    return render_template('fail.html', databaseWord=databaseWord)
 
 
 # used to login to the game
