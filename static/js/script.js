@@ -79,9 +79,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
         infoContainer.style.display = 'none';
         
     })
-    popupClose.addEventListener('click', function(){
-        warning.style.display = 'none';
-    })
-
     
 });
