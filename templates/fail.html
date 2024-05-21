@@ -11,7 +11,7 @@
         <p class="after-text">your word was: {{ databaseWord }}</p>
     </div>
     <div id="home-buttons">
-        <a href="{{url_for('viewlib')}}"><button class="home-button">Pick another Library</button></a>
+        <form action="/viewlib" method="POST" ><button class="home-button">Pick another Library</button></form>
     </div>
 </section>
 {% endblock %}

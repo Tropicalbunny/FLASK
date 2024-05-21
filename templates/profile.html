@@ -10,8 +10,10 @@
 
 <section>
         <div id="home-buttons">
-            <a href="{{url_for('userlibrary', username=session['user'])}}"><button class="home-button">Your Libraries</button></a>
-            <a href="{{url_for('viewlib')}}"><button class="home-button">View all Libraries</button></a>
+            <form action="{{ url_for('userlibrary', username=session['user']) }}" method="get">
+                <button type="submit" class="home-button">Your Libraries</button>
+            </form>
+            <form action="/viewlib" method="POST" ><button class="home-button">View all Libraries</button></form>
         </div>
 </section>
 {% endblock %}
