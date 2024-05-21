@@ -307,7 +307,8 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     margin: 20px;
     background-color: #8422D0;
     color: #D9D9D9;
-    display: flex;
+    display: inline-block;
+    position: relative;
     border-radius: 5px;
 
 }
@@ -333,13 +334,11 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .view-outer{
     width: 100%;
     height: auto;
-    display: flex;
     justify-content: center;
 }
 .view-canvas{
     width: 900px;
     height: inherit;
-    display: flex;
     text-align: center;
     justify-content: center;
 }
