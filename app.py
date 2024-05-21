@@ -325,6 +325,7 @@ def addtitle():
 
 
 
-if __name__ == '__main__':
-    from os import environ
-    app.run(debug=True, port=environ.get("PORT", 5000))
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)
