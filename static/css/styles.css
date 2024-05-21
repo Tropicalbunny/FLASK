@@ -305,6 +305,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .add-word{
     border-radius: 5px;
+    padding-right: 10px;
 }
 .add-library-input{
     width:200px;
@@ -424,7 +425,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     .add-word-button{
         height: 30px;
     }
-    .add-word{
+    .update-word{
         width:70px
     }
 }
