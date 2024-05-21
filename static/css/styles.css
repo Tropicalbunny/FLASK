@@ -288,6 +288,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .word-button-box{
     text-align: right;
+    display: inline-block;
 }
 .word-box{
     width: 33%;
@@ -295,10 +296,14 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .add-word-box{
     width:150px;
-    display: flex;
+    display: inline-block;
+}
+.update-word{
+    width: 110px;
+    border-radius: 5px;
+
 }
 .add-word{
-    width: 110px;
     border-radius: 5px;
 }
 .add-library-input{
