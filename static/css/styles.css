@@ -307,6 +307,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .add-word{
     border-radius: 5px;
     padding-right: 10px;
+    width: 150px;
 }
 .add-library-input{
     width:200px;

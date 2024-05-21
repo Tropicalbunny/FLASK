@@ -105,12 +105,25 @@ i often used print to show variables that i struggled getting to pass in and out
 - i had trouble with the "edit" route, print allowed me to debug where the code was going wrong, the issue ended up being a typo within the route.
 
 ### Final Testing
+testing was done across a few small devices
+- samsung s21
+- samsung s24 ultra
+- samsung s24
+- iphone 5
+after some tweaks mentioned below, it appears to be functioning as intended.
+
+I ran the code through css validator and got a pass result 
+![CSSpass](assets/Readme/CSSpass.PNG "CSSpass")
+Lighthouse returned 96 points, which i am happy with 
+![Lighthousepass](assets/Readme/Lighthousepass.PNG "Lighthousepass")
 
 #### User Comments
-
-
+- some button text has different sizes (fixed with removing some classes)
+- reset button takes away from the login button (i agreed and removed it from login)
 #### Personal Testing
-
+I went trough all links to make sure they are working,  checked the phone sizing and the website needed alot of tweaking.
+- updating Libraries was out of line, including the add word at the bottom.
+- view libraries wasnt shrinking over smaller devices. updated to make this work.
 
 
 ## Features Implemented
