@@ -175,7 +175,8 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 ### Encounted Issues
 - heroku was refusing to read the Procfile, this issue was solved byt changing the encoding format to UTF-8
 - the Port was failing to bind correctly. i missed some code within the Python app
-- the guess buttons did not work on deployment
+- the guess buttons did not work on deployment, this was a HTTPS issue. which was fixed with a simple bit of code
+![deployment-issue](assets/Readme/deployment-issue.PNG "deployment-issue")
 
 ## Credits
 
