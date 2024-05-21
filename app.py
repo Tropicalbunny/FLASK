@@ -186,15 +186,16 @@ def login():
     if request.method == 'POST':
         username = request.form.get('username')
         password1 = request.form.get('password1')
-        usernameCheck = coll.find_one({"username": username.lower(),})
+        usernameCheck = coll.find_one({"username": username,})
         if usernameCheck:
             if check_password_hash(usernameCheck["password"], password1):
-                session["user"] = request.form.get("username").lower()
+                session["user"] = request.form.get("username")
                 flash("Welcome Back! {}".format(request.form.get("username")), category='pass')
                 return redirect(url_for("profile", username=session["user"]))
             else:
                 flash("username and/or password is incorrect", category="fail")
-
+        else:
+            flash("account does not exist", category="fail")
 
     return render_template('login.html',)
 
@@ -208,7 +209,7 @@ def signup():
         name = request.form.get('name')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
-        usernameCheck = coll.find_one({"username": username.lower(),})
+        usernameCheck = coll.find_one({"username": username,})
         if password1 != password2:
             flash('Passwords do not match', category='fail')
         elif len(password1) < 5:
@@ -224,7 +225,7 @@ def signup():
                     "password": password 
             }
             coll.insert_one(newInfo)
-            session["user"] = request.form.get("username").lower()
+            session["user"] = request.form.get("username")
             return redirect(url_for("profile", username=session["user"]))
 
 
