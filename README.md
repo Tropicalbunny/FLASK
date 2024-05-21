@@ -85,6 +85,10 @@ my final idea incoperates login functions so that each user can create their own
 i decided to go for a simple retro look, as hangman is a very old game i took insperation from the old 2d text games. and tried to keep with tradition. i thought the font "Klee One" was perfect for this, i felt the font brought the rather sharp lines of the rest of the site together.
 
 as this design was more of a retro look, i tried to be minimalist while trying to bring the website to the 21s centruy.
+![figma1](assets/Readme/figma1.PNG "figma1")
+![figma2](assets/Readme/figma2.PNG "figma2")
+![figma3](assets/Readme/figma3.PNG "figma3")
+
 #### Notable Design Decisions.
 
 
