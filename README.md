@@ -114,9 +114,15 @@ after some tweaks mentioned below, it appears to be functioning as intended.
 
 I ran the code through css validator and got a pass result 
 ![CSSpass](assets/Readme/CSSpass.PNG "CSSpass")
-Lighthouse returned 96 points, which i am happy with 
+
+Lighthouse returned 94 points, which i am happy with 
 ![Lighthousepass](assets/Readme/Lighthousepass.PNG "Lighthousepass")
 
+I have also ran through HTML:
+![HTML-errors](assets/Readme/HTML-errors.PNG "HTML-errors")
+
+i went through and updated all the hyperlinks to be forms instead. solving the errors, i have also added titles to all of the templates
+![HTMLsuccess](assets/Readme/HTMLsuccess.PNG "HTMLsuccess")
 #### User Comments
 - some button text has different sizes (fixed with removing some classes)
 - reset button takes away from the login button (i agreed and removed it from login)
