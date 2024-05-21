@@ -182,7 +182,28 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 ---
 
 ### Process
-
+the website was deployed to heroku, below is the process i went through to have a successful deployment
+1. clone my Github Repository:
+- to do this, head over to my repo (link on the top of the readme) and click the green code button 
+- use this to clone a copy for yourself.
+2. create heroku dependencies.
+- head to the terminal in your coding enviroment and input the code "pip3 freeze --local > requirements.txt" this will create the file that heroku uses to know what dependencies you require
+- in the same terminal, input "echo web: python app.py > Procfile" make sure to check this file, as sometimes the codec uses the UTF-16 format when you need to be using the UTF-8 format. you also need to check that there is no extra line on the bottom as this can also cause issues.
+3. create/login to heroku.
+4.  Add the app
+- hopefully you are on the home screen, from here you select new from the top left corner
+- select a unique name for your app, as they cannot be the same, then select the region thats closest to you.
+- click create app
+5. i then used Github to connect to heroku 
+- make sure to login with your Github account, and type the name of the newly copied repo.
+- once it is found, select it to connect to the repo
+6. update variables
+- click to settings 
+- reveal the config vars, this is where you add the variables that have been hidden from Github. i have hidden senitive info, but below is the variables needed to be included
+![configheroku](assets/Readme/configheroku.PNG "configheroku")
+7. deploy
+- head back to the deployment section and select automatic deployments. 
+- watch the build, once "build sucessful" has appeared you know you have odne the steps correctly
 
 
 ### Encounted Issues
