@@ -389,6 +389,10 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         height:200px;
         font-size: large;
     }
+    .view-box{
+        margin: 10px;
+        display: block;
+    }
 }
 @media screen and (max-width: 495px) {
     /* navbar tweaks to sit better on smaller devices */
@@ -406,4 +410,14 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     .small-screen {
         font-size: 80%;
     }
+    #form {
+        width: 300px;
+        text-align: center;
+        background-color: #8422D0c7;
+        padding: 10px;
+        margin: 150px auto;
+        border-radius: 30px;
+        font-size: 80%;
+    }
+
 }
