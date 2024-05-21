@@ -9,14 +9,16 @@
     <div class="view-canvas">
 {% for title in titles %}
         <div class="view-box">
-            <div class="view-inner">
-                <h3>{{ title }}</h3>
-            </div>
-            <div class="view-inner-button word-button-box">
-                <form action="/start" method="post">
-                    <input type="hidden" name="title" id="title" value="{{ title }}">
-                    <button type="submit" class="view-button" >Play </button>
-                </form>
+            <div class="view-box-inner">
+                <div class="view-inner">
+                    <h3>{{ title }}</h3>
+                </div>
+                <div class="view-inner-button word-button-box">
+                    <form action="/start" method="post">
+                        <input type="hidden" name="title" id="title" value="{{ title }}">
+                        <button type="submit" class="view-button" >Play </button>
+                    </form>
+                </div>
             </div>
         </div>
 {% endfor %}

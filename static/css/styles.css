@@ -314,6 +314,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .view-inner-button{
     width:30%;
+    height: 40px;
 
 }
 .view-button{
@@ -327,22 +328,25 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     background-color: #d0229f;
 }
 .view-inner{
-    width:70%;
-    text-align: center center;
+    width:65%;
+    height: 40px;
+    text-align: center;
     font-weight: bolder;
 }
 .view-outer{
     width: 100%;
     height: auto;
+    display: flex;
     justify-content: center;
 }
 .view-canvas{
     width: 900px;
     height: inherit;
     text-align: center;
-    justify-content: center;
 }
-
+.view-box-inner{
+    display: flex;
+}
 /* accordion styles*/
 .accordion-spacing{
     margin: 5px;
