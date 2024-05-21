@@ -280,10 +280,11 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     height: 50px;
     width: 100%;
     margin: 5px;
-    display: block;
+    display: flex;
 }
 .word-holder-inner{
     display: flex;
+    width: 300px;
 }
 .word-button-box{
     text-align: right;
