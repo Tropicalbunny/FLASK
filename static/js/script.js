@@ -3,13 +3,14 @@
 function sendValue(buttonValue) {
     fetch('/button', {
         method: 'POST',
-        body: JSON.stringify({value: buttonValue}),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ value: 'a' }),
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
 }
 fetch('/updateimage')
     .then(response => response.json())
