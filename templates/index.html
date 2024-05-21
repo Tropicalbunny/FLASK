@@ -15,8 +15,8 @@
         </p>
     </div>
     <div id="home-buttons">
-        <a href="{{url_for('viewlib')}}"><button class="home-button">Pick Library</button></a>
-        <a class="nav-link link-hover" href="{{url_for('login')}}"><button class="home-button">Sign in</button></a>
+        <form action="/viewlib" method="POST" ><button class="home-button">Pick Library</button></form>
+        <form action="/login" method="POST" ><button class="home-button">Sign in</button></form>
     </div>
 </section>
 

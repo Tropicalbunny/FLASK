@@ -175,7 +175,8 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 - the "word was" at the end of the game was not pulling the word through, i forgot to remove the place holder prom the variable.
 - the word was not being randomly selected, i had to rework the code to turn the database information into a python list. to then randomise the word to be guessed.
 - the bug mentioned above where the page was loading before the code would execute, used time to slow the page by 0.1 seconds.
-
+- i had an issue where usernames with Capital letters where causing the below error to appear. i have removed the .lower from the python code, so they are capital specific usernames.
+![callbackerror](assets/Readme/callbackerror.jpg "callbackerror")
 
 ## Deployment
 
