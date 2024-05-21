@@ -1,4 +1,9 @@
-
+/** code taken from stack overflow to solve deployment issues */
+const { PORT=5000, LOCAL_ADDRESS='0.0.0.0' } = process.env
+server.listen(PORT, LOCAL_ADDRESS, () => {
+  const address = server.address();
+  console.log('server listening at', address);
+});
 /**sends the value of the specific button pressed */
 function sendValue(buttonValue) {
     fetch('/button', {

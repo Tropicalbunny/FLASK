@@ -173,7 +173,8 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 
 
 ### Encounted Issues
-- heroku was refusing to read the Procfile
+- heroku was refusing to read the Procfile, this issue was solved byt changing the encoding format to UTF-8
+- the Port was failing to bind correctly
 
 ## Credits
 
@@ -186,7 +187,6 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 
 ### Code aid
 
-- W3C schools for the Gallery
 - Bootstrap v5 
 
 ### Testing
