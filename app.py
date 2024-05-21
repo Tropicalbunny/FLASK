@@ -263,7 +263,7 @@ def userlibrary(username):
 @app.route('/addword', methods=["POST"])
 def addword():
     username = session['user']
-    word = request.form.get('word')
+    word = request.form.get('word').lower()
     title = request.form.get('title')
     wordCheck = lib.find_one({'word': word, 'title': title,})
     newword = {
@@ -289,8 +289,8 @@ def delword():
 #route to edit words in database
 @app.route('/editword', methods=['POST'])
 def editword():
-    word = request.form.get('word')
-    word2 = request.form.get('word2')
+    word = request.form.get('word').lower()
+    word2 = request.form.get('word2').lower()
     title = request.form.get('title')
     wordCheck = lib.find_one({'word': word2, 'title': title,})
     if wordCheck:
