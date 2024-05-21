@@ -136,13 +136,13 @@ def start():
         return redirect(url_for("viewlib"))
 
 
-@app.route('/updateimage', methods=["POST"])
+@app.route('/updateimage', methods=["POST" , "GET"])
 def update_image():
     guesses_left = session.get('guesses_left', 7)
     return jsonify(guesses_left)
 
 
-@app.route('/isGameOver', methods=["POST"])
+@app.route('/isGameOver', methods=["POST" , "GET"])
 def game_over():
     game_over = session.get('game_over', False)
     return jsonify(game_over)
