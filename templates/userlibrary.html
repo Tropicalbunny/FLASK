@@ -47,18 +47,20 @@
 
               <hr>
               <!--add word to library-->
-              <div class="word-holder">
+            <div class="word-holder">
+              <div class="word-holder-inner">
                 <form  action="/addword" method="POST">
-                  <div class="word-box">
+                  <div class="add-word-box">
                     <input type="hidden" name="title" id="title" value="{{ title }}">
                     <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
                           pattern="^[a-zA-Z]{4,15}$" placeholder="Add word" required>
                   </div>
-                  <div class="word-button-box ">
+                  <div class="word-button-box">
                           <input type="submit" class="add-word-button" value="add word">
                   </div>
                 </form>
               </div>
+            </div>
           </div>
         </div>
       </div>

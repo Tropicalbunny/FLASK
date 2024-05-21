@@ -280,6 +280,9 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     height: 50px;
     width: 100%;
     margin: 5px;
+    display: block;
+}
+.word-holder-inner{
     display: flex;
 }
 .word-button-box{
@@ -287,6 +290,10 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .word-box{
     width: 33%;
+    display: flex;
+}
+.add-word-box{
+    width:150px;
     display: flex;
 }
 .add-word{
