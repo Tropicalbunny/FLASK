@@ -127,6 +127,18 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 .update-button:hover{
     background-color: #d0229f;
 }
+.add-word-button{
+    text-align: center;
+    border-radius: 15px;
+    width: 100px;
+    height: 40px;
+    background-color: #8422D0;
+    border: none;
+    outline: none;
+}
+.add-word-button:hover{
+    background-color: #d0229f; 
+}
 #home-buttons{
     text-align: center;
     margin: auto;
@@ -389,8 +401,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         height:200px;
         font-size: large;
     }
-    .view-box{
-        margin: 10px;
+    .view-outer{
         display: block;
     }
 }
@@ -405,6 +416,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     .update-button{
         width: 60px;
         height: 40px;
+        margin: 2px;
     }
     /* shrinks text for small screens */
     .small-screen {
@@ -412,11 +424,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     }
     #form {
         width: 300px;
-        text-align: center;
-        background-color: #8422D0c7;
         padding: 10px;
-        margin: 150px auto;
-        border-radius: 30px;
         font-size: 80%;
     }
 
