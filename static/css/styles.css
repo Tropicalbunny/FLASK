@@ -284,7 +284,6 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
 }
 .word-button-box{
     text-align: right;
-    padding: 5px;
 }
 .word-box{
     width: 33%;
@@ -399,7 +398,7 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         width: auto;
     }
     .phone-shrink{
-        width:150px
+        width:110px
     }
     #info-text{
         width:300px;
@@ -408,6 +407,12 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     }
     .view-canvas{
         width: 100%;
+    }
+    .add-word-button{
+        height: 30px;
+    }
+    .add-word{
+        width:70px
     }
 }
 @media screen and (max-width: 495px) {

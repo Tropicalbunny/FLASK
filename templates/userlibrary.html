@@ -47,7 +47,8 @@
 
               <hr>
               <!--add word to library-->
-                <form class="word-holder" action="/addword" method="POST">
+              <div class="word-holder">
+                <form  action="/addword" method="POST">
                   <div class="word-box">
                     <input type="hidden" name="title" id="title" value="{{ title }}">
                     <input name="word" id="word" class="add-word" type="text" minlength="4" maxlength="15"
@@ -57,6 +58,7 @@
                           <input type="submit" class="add-word-button" value="add word">
                   </div>
                 </form>
+              </div>
           </div>
         </div>
       </div>
