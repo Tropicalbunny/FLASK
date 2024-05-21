@@ -340,6 +340,8 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     width: 900px;
     height: inherit;
     display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 /* accordion styles*/
@@ -401,8 +403,8 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         height:200px;
         font-size: large;
     }
-    .view-outer{
-        display: block;
+    .view-canvas{
+        width: 100%;
     }
 }
 @media screen and (max-width: 495px) {
