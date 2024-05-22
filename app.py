@@ -72,11 +72,12 @@ def hangman(guess, session):
 
     session['correct_letters'] = correct_letters.strip()
     session['guessed_letters'] = guessed_letters
+    
 
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
         return game_over
-
+    return redirect(url_for("gameboard"))
 
 @app.route('/')
 def index():

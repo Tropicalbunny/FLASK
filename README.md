@@ -176,7 +176,7 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 - the accordions start closed, but the header wuld indicate they are open, with the off purple and arrow in wrong direction
 - the gameboard briefly refreshes after each button press. it is not seamless. this is because i had to put a delay on the page, the delay is used to give the guess time to be sent through the app before the page is rendered. i did not find another way to do this.
 - the font i have used refuses to be bold, this has caused some discomfort as i would of liked to make the nav items bold so they could be read easier.
-- if more than one person is using the website game at any given time, they seem to cross over and wreak havok on eachother. i used Global variables, which i didnt think would cause the issue, seeing as i already use session i decided to incoperate that to avoid the issue. luckily this was not too difficult as i used "global" every time i used the variable, so i checked where i used it and updated all accordingly. with help from Microsofts co-pilot.
+
 
 ### fixed Bugs
 - the "word was" at the end of the game was not pulling the word through, i forgot to remove the place holder prom the variable.
@@ -184,7 +184,10 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 - the bug mentioned above where the page was loading before the code would execute, used time to slow the page by 0.1 seconds.
 - i had an issue where usernames with Capital letters where causing the below error to appear. i have removed the .lower from the python code, so they are capital specific usernames.
 ![callbackerror](assets/Readme/callbackerror.jpg "callbackerror")
-
+if more than one person is using the website game at any given time, they seem to cross over and wreak havok on eachother. i used Global variables, which i didnt think would cause the issue, seeing as i already use session i decided to incoperate that to avoid the issue. luckily this was not too difficult as i used "global" every time i used the variable, so i checked where i used it and updated all accordingly. with help from Microsofts co-pilot.
+This came with a whole host of new issues.
+- i could no longer test on localhost development server as i got 400 bad request whenever loading the gameboard, i never found the issue but the site seemed to run on heroku fine. i did some digging and online suggested this was a protocol issue. where i had to update my JS to make sure it was HTTPS running on heroko, i thought this may be the issue, a missmatch of protocols.
+- when game board was re-loading it was not loading the most up to date guess, rather the one prior to it. 
 ## Deployment
 
 ---
