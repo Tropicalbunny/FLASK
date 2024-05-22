@@ -72,7 +72,7 @@ def hangman(guess, session):
     session['correct_letters'] = correct_letters
     session['guessed_letters'] = guessed_letters
     print("cookie", session['correct_letters'])
-
+    gameboard()
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
 
