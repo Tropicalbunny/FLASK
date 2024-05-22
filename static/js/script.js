@@ -34,7 +34,6 @@ fetch('/updateimage')
 fetch('/isGameOver')
     .then(response => response.json())
     .then(data => {
-        console.log(data)
         if (data == 1) {
             window.location.href = '/fail'
     } else if (data == 2){
@@ -54,7 +53,6 @@ fetch('/updateButtons')
 
     buttonsArray.forEach(element => {
         hideButton(element);
-        console.log(element);
     });
 });
 /**function used to transition to game page */
@@ -67,8 +65,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let infoOpen = document.getElementById('info-open');
     let infoContainer = document.getElementById('info-container');
     let infoClose = document.getElementById('info-close');
-    let popupClose = document.getElementsByClassName('close');
-    let warning = document.getElementById('warning');
     infoOpen.addEventListener('click', function(){
         infoContainer.style.display = 'block';
     })

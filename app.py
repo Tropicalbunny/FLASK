@@ -56,7 +56,6 @@ def hangman(guess, session):
 
     guessed_letters = guessed_letters + guess
     correct_letters = ""
-    print(guessed_letters)
     if guess not in database_word:
         guesses_left -= 1
         session['guesses_left'] = guesses_left
@@ -72,7 +71,7 @@ def hangman(guess, session):
 
     session['correct_letters'] = correct_letters
     session['guessed_letters'] = guessed_letters
-    print("cookie", session['guessed_letters'])
+    print("cookie", session['correct_letters'])
 
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
@@ -84,7 +83,7 @@ def index():
 
 @app.route('/updateButtons')
 def updateButtons():
-    guessed_letters = session.get('guessed_letters', "")
+    guessed_letters = session.get('guessed_letters')
     return jsonify(guessed_letters)
 
 
@@ -98,16 +97,12 @@ def buttonpress():
     return jsonify({
         'status': 'success',
         'value_received': value,
-        'correct_letters': session['correct_letters'],
-        'guessed_letters': session['guessed_letters'],
-        'guesses_left': session['guesses_left'],
-        'game_over': session['game_over']
     })
 
 @app.route('/gameboard')
 def gameboard():
     time.sleep(0.1)
-    correct_letters = session.get('correct_letters', "")
+    correct_letters = session.get('correct_letters')
     print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
