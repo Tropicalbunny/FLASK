@@ -99,7 +99,7 @@ def buttonpress():
 })
 
 @app.route('/gameboard')
-def gameboard(correct_letters):
+def gameboard():
     correct_letters = session['correct_letters']
     print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
