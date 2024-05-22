@@ -55,10 +55,7 @@ fetch('/updateButtons')
         hideButton(element);
     });
 });
-/**function used to transition to game page */
-function goToGameboard() {
-    window.location.href = '/gameboard';
-}
+
 
 /** event listener to allow for get elements to work correctly */
 document.addEventListener("DOMContentLoaded", (event) => {

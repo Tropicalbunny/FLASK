@@ -187,7 +187,7 @@ the gameboard is simple is design, i wanted to make it minimalist so it would be
 if more than one person is using the website game at any given time, they seem to cross over and wreak havok on eachother. i used Global variables, which i didnt think would cause the issue, seeing as i already use session i decided to incoperate that to avoid the issue. luckily this was not too difficult as i used "global" every time i used the variable, so i checked where i used it and updated all accordingly. with help from Microsofts co-pilot.
 This came with a whole host of new issues.
 - i could no longer test on localhost development server as i got 400 bad request whenever loading the gameboard, i never found the issue but the site seemed to run on heroku fine. i did some digging and online suggested this was a protocol issue. where i had to update my JS to make sure it was HTTPS running on heroko, i thought this may be the issue, a missmatch of protocols.
-- when game board was re-loading it was not loading the most up to date guess, rather the one prior to it. 
+- when game board was re-loading it was not loading the most up to date guess, rather the one prior to it. Debbugging took a while. and i narrowed it down to gameboard being ran before the session "correct_letters" had been updated.
 ## Deployment
 
 ---
