@@ -70,7 +70,7 @@ def hangman(guess, session):
         else:
             correct_letters += "_ "
 
-    session['correct_letters'] = correct_letters.strip()
+    session['correct_letters'] = correct_letters
     session['guessed_letters'] = guessed_letters
     print("cookie", session['guessed_letters'])
 
@@ -99,6 +99,7 @@ def buttonpress():
 @app.route('/gameboard')
 def gameboard():
     correct_letters = session.get('correct_letters', "")
+    print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
 
