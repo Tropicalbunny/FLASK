@@ -9,8 +9,6 @@ function sendValue(buttonValue) {
         body: JSON.stringify({ value: buttonValue }),
     })
     .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error => console.error('Error:', error));
 }
 fetch('/updateimage')
     .then(response => response.json())

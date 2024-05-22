@@ -56,7 +56,7 @@ def hangman(guess, session):
 
     guessed_letters = guessed_letters + guess
     correct_letters = ""
-
+    print(guessed_letters)
     if guess not in database_word:
         guesses_left -= 1
         session['guesses_left'] = guesses_left
@@ -72,7 +72,7 @@ def hangman(guess, session):
 
     session['correct_letters'] = correct_letters.strip()
     session['guessed_letters'] = guessed_letters
-    
+    print("cookie", session['guessed_letters'])
 
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
