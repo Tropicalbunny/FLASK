@@ -93,11 +93,12 @@ def buttonpress():
     data = request.json
     value = data['value']
     hangman(value, session)
-    return redirect(url_for("gameboard"))
+    session.modified = True
 
 
 @app.route('/gameboard')
 def gameboard():
+    time.sleep(0.2)
     correct_letters = session.get('correct_letters', "")
     print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
