@@ -107,7 +107,7 @@ def gameboard():
     time.sleep(0.1)
     correct_letters = session.get('correct_letters')
     print("gameboard", correct_letters)
-    return render_template('gameboard.html', displayedLetters=correct_letters)
+    return render_template('gameboard.html')
 
 
 @app.route('/viewlib', methods=['GET', 'POST'])
