@@ -76,8 +76,6 @@ def hangman(guess, session):
 
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
-        return game_over
-    return redirect(url_for("gameboard"))
 
 @app.route('/')
 def index():
@@ -95,12 +93,11 @@ def buttonpress():
     data = request.json
     value = data['value']
     hangman(value, session)
-    return {'status': 'success', 'value_received': value}
+    return redirect(url_for("gameboard"))
 
 
 @app.route('/gameboard')
 def gameboard():
-    time.sleep(0.1)
     correct_letters = session.get('correct_letters', "")
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
