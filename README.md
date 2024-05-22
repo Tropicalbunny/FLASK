@@ -188,6 +188,8 @@ if more than one person is using the website game at any given time, they seem t
 This came with a whole host of new issues.
 - i could no longer test on localhost development server as i got 400 bad request whenever loading the gameboard, i never found the issue but the site seemed to run on heroku fine. i did some digging and online suggested this was a protocol issue. where i had to update my JS to make sure it was HTTPS running on heroko, i thought this may be the issue, a missmatch of protocols.
 - when game board was re-loading it was not loading the most up to date guess, rather the one prior to it. Debbugging took a while. and i narrowed it down to gameboard being ran before the session "correct_letters" had been updated.
+ 1. i tried adding time.sleep to try and give time for the session to update
+ 2. i tried calling the gameboard function within the hangman function.
 ## Deployment
 
 ---
