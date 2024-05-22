@@ -21,7 +21,7 @@
     <div id="hangman-image-outer">
         <img id="hangman-image-inner" src="/static/images/hang1.png">
     </div>
-    <div id="word-guess"><p id="displayedLetters"></p></div>
+    <div id="word-guess"><p>{{ displayedLetters }}</p></div>
     <div id="letter-guesses">
         <form>
         <button onclick="sendValue(this.value)" class="guess-button" id="a" value ="a">A</button>

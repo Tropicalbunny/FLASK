@@ -9,14 +9,6 @@ function sendValue(buttonValue) {
         body: JSON.stringify({ value: buttonValue }),
     })
     .then(response => response.json())
-    .then(data => {
-        if (data.status === 'success') {d
-            document.querySelector('#displayedLetters').textContent = data.correct_letters;
-        } else {
-            console.error('Error processing guess:', data);
-        }
-    })
-    .catch(error => console.error('Error:', error));
 }
 fetch('/updateimage')
     .then(response => response.json())
