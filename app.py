@@ -100,8 +100,7 @@ def buttonpress():
 
 @app.route('/gameboard')
 def gameboard():
-    time.sleep(1)
-    correct_letters = session.get('correct_letters')
+    correct_letters = session['correct_letters']
     print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
