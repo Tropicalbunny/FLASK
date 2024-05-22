@@ -43,7 +43,7 @@ def start_new_game(session):
     session['guesses_left'] = 7
     session['guessed_letters'] = ""
     session['correct_letters'] = ""
-    session['game_over'] = False
+    session['game_over'] = 0
     session['database_word'] = ""
 
 
@@ -54,14 +54,14 @@ def hangman(guess, session):
     game_over = session['game_over']
     database_word = session['database_word']
 
-    guessed_letters += guess
+    guessed_letters = guessed_letters + guess
     correct_letters = ""
 
     if guess not in database_word:
         guesses_left -= 1
         session['guesses_left'] = guesses_left
         if guesses_left == 0:
-            session['game_over'] = True
+            session['game_over'] = 1
             return game_over
 
     for letter in database_word:
@@ -74,8 +74,8 @@ def hangman(guess, session):
     session['guessed_letters'] = guessed_letters
 
     if all(letter in guessed_letters for letter in database_word):
-        session['game_over'] = True
-        return True
+        session['game_over'] = 2
+        return game_over
 
 
 @app.route('/')
@@ -138,7 +138,7 @@ def start():
 
 @app.route('/updateimage', methods=["POST" , "GET"])
 def update_image():
-    guesses_left = session.get('guesses_left', 7)
+    guesses_left = session.get('guesses_left')
     return jsonify(guesses_left)
 
 
