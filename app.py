@@ -74,8 +74,6 @@ def hangman(guess, session):
     print("cookie", session['correct_letters'])
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
-    else:
-        return render_template('gameboard.html', displayedLetters=correct_letters)
 
 @app.route('/')
 def index():
@@ -98,6 +96,7 @@ def buttonpress():
     return jsonify({
     'status': 'success',
     'value_received': value,
+    'correct_letters': session['correct_letters'],
 })
 
 @app.route('/gameboard')
@@ -133,7 +132,6 @@ def start():
         database_word = random.choice(wordList)
         session['database_word'] = database_word
         session['correct_letters'] = "_ " * len(database_word)
-        correct_letters = "_ " * len(database_word)
         return redirect(url_for("gameboard"))
     else:
         flash('No words exist in database', category="fail")
