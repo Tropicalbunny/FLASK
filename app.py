@@ -104,7 +104,7 @@ def buttonpress():
 def gameboard():
     correct_letters = session['correct_letters']
     print("gameboard", correct_letters)
-    return render_template('gameboard.html')
+    return render_template('gameboard.html', displayedLetters=correct_letters)
 
 
 @app.route('/viewlib', methods=['GET', 'POST'])
@@ -134,7 +134,7 @@ def start():
         session['database_word'] = database_word
         session['correct_letters'] = "_ " * len(database_word)
         correct_letters = "_ " * len(database_word)
-        return render_template('gameboard.html', displayedLetters=correct_letters)
+        return redirect(url_for("gameboard"))
     else:
         flash('No words exist in database', category="fail")
         return redirect(url_for("viewlib"))
