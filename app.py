@@ -91,19 +91,20 @@ def buttonpress():
     data = request.json
     value = data['value']
     hangman(value, session)
+    
     session.modified = True
     
     return jsonify({
-    'status': 'success',
-    'value_received': value,
-    'correct_letters': session['correct_letters'],
-})
+        'status': 'success',
+        'correct_letters': session['correct_letters'],
+        'guessed_letters': session['guessed_letters'],
+        'guesses_left': session['guesses_left'],
+        'game_over': session['game_over']
+    })
 
 @app.route('/gameboard')
 def gameboard():
-    correct_letters = session['correct_letters']
-    print("gameboard", correct_letters)
-    return render_template('gameboard.html', displayedLetters=correct_letters)
+    return render_template('gameboard.html')
 
 
 @app.route('/viewlib', methods=['GET', 'POST'])
