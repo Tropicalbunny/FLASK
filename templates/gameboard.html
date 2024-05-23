@@ -24,11 +24,9 @@
     <div id="word-guess"><p id="displayedLetters"></p></div>
     <div id="letter-guesses">
         <!-- Updated code from Stackoverflow, user furas-->
-        <form>            
-            {% for char in "abcdefghijklmnopqrstuvwxyz" %}
-                <button onclick="event.preventDefault(); sendValue(this.value)" class="guess-button" id="{{ char }}" value ="{{ char }}">{{ char | upper }}</button>
-            {% endfor %}    
-        </form>
+        {% for char in "abcdefghijklmnopqrstuvwxyz" %}
+            <button onclick="sendValue(this.value)" class="guess-button" id="{{ char }}" value ="{{ char }}">{{ char | upper }}</button>
+        {% endfor %}  
     </div>
 </section>
 <!--pop ups-->
