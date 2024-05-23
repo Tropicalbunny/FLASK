@@ -1,5 +1,11 @@
 
 /**sends the value of the specific button pressed */
+function sendValueEvent(event) {
+    event.preventDefault();
+    buttonValue = event.target.value;
+    sendValue(buttonValue);
+}
+
 function sendValue(buttonValue) {
     fetch('/button', {
         method: 'POST',

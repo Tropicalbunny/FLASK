@@ -147,7 +147,7 @@ def update_image():
 
 @app.route('/isGameOver', methods=["POST" , "GET"])
 def game_over():
-    game_over = session.get('game_over', False)
+    game_over = session.get('game_over')
     return jsonify(game_over)
 
 
