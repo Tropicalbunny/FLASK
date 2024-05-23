@@ -23,34 +23,11 @@
     </div>
     <div id="word-guess"><p id="displayedLetters"></p></div>
     <div id="letter-guesses">
-        <form>
-        <button onclick="sendValue(this.value)" class="guess-button" id="a" value ="a">A</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="b" value ="b">B</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="c" value ="c">C</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="d" value ="d">D</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="e" value ="e">E</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="f" value ="f">F</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="g" value ="g">G</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="h" value ="h">H</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="i" value ="i">I</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="j" value ="j">J</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="k" value ="k">k</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="l" value ="l">L</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="m" value ="m">M</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="n" value ="n">N</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="o" value ="o">O</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="p" value ="p">P</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="q" value ="q">Q</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="r" value ="r">R</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="s" value ="s">S</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="t" value ="t">T</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="u" value ="u">U</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="v" value ="v">V</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="w" value ="w">W</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="x" value ="x">X</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="y" value ="y">Y</button>
-        <button onclick="sendValue(this.value)" class="guess-button" id="z" value ="z">Z</button>
-
+        <!-- Updated code from Stackoverflow, user furas-->
+        <form>            
+            {% for char in "abcdefghijklmnopqrstuvwxyz" %}
+                <button onclick="event.preventDefault(); sendValue(this.value)" class="guess-button" id="{{ char }}" value ="{{ char }}">{{ char | upper }}</button>
+            {% endfor %}    
         </form>
     </div>
 </section>
