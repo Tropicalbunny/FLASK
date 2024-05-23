@@ -26,9 +26,10 @@ function sendValue(buttonValue) {
     .then(data => {
         if (data.status === 'success') {
             document.querySelector('#displayedLetters').textContent = data.correct_letters;
-            return 'success'
+            return 'success';
         }else {
             console.error('Error processing guess:', data);
+            throw new Error('Error processing guess');
         }
     })
 }
