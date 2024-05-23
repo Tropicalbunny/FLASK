@@ -3,7 +3,15 @@
 function sendValueEvent(event) {
     event.preventDefault();
     buttonValue = event.target.value;
-    sendValue(buttonValue);
+    sendValue(buttonValue).then(response => {
+        if (response === 'success') {
+            event.target.form.submit();
+        } else {
+            console.log('sendValue did not return success');
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 function sendValue(buttonValue) {
@@ -18,6 +26,15 @@ function sendValue(buttonValue) {
     .then(data => {
         if (data.status === 'success') {
             document.querySelector('#displayedLetters').textContent = data.correct_letters;
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (value) {
+                        resolve('success');
+                    } else {
+                        reject('error');
+                    }
+                }, 1000);
+            });
         }else {
             console.error('Error processing guess:', data);
         }
