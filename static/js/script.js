@@ -26,15 +26,7 @@ function sendValue(buttonValue) {
     .then(data => {
         if (data.status === 'success') {
             document.querySelector('#displayedLetters').textContent = data.correct_letters;
-            return new Promise((resolve, reject) => {
-                setTimeout(() => {
-                    if (value) {
-                        resolve('success');
-                    } else {
-                        reject('error');
-                    }
-                }, 1000);
-            });
+            return 'success'
         }else {
             console.error('Error processing guess:', data);
         }
