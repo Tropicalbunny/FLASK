@@ -16,13 +16,15 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 
+#all the ddatabase connections
 MONGO_URI = os.environ.get("MONGO_URI")
 DATABASE = "loginInfo"
 COLLECTION = "Users"
 LIBRARY = "lib"
 WORDS = "words"
-#code to run main game
 
+
+#sends the connection to make sure database is connected 
 def mongo_connect(url):
     try:
         conn = pymongo.MongoClient(url)
@@ -39,6 +41,7 @@ coll = conn[DATABASE][COLLECTION]
 lib = conn[LIBRARY][WORDS]
 
 
+#  sets all varaibles to default, only called by the start function
 def start_new_game(session):
     session['guesses_left'] = 7
     session['guessed_letters'] = ""
@@ -47,6 +50,7 @@ def start_new_game(session):
     session['database_word'] = ""
 
 
+# processes each guess and updates the session cookies to be used elsewhere
 def hangman(guess, session):
     guesses_left = session['guesses_left']
     guessed_letters = session['guessed_letters']
@@ -74,17 +78,21 @@ def hangman(guess, session):
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
 
+
+#entry into the website
 @app.route('/')
 def index():
     return render_template('index.html')
 
 
+# sends a response to js, in order to remove the buttons already clicked
 @app.route('/updateButtons')
 def updateButtons():
     guessed_letters = session.get('guessed_letters')
     return jsonify(guessed_letters)
 
 
+# on click of a button, sends the letter assosiated with the button to be sent to hangman. then tells the page to update
 @app.route('/button', methods=["POST"])
 def buttonpress():
     data = request.json
@@ -97,22 +105,15 @@ def buttonpress():
         'status': 'success',
     })
 
+
+#route for the gamebaord page, that also updates the displayedletters within the HTML
 @app.route('/gameboard')
 def gameboard():
     correct_letters = session['correct_letters']
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
 
-@app.route('/viewlib', methods=['GET', 'POST'])
-def viewlib():
-    titles = set()
-    for item in lib.find({}):
-        title = item.get("title")
-        if title:
-            titles.add(title)
-    return render_template("viewlib.html", titles=titles)
-
-
+# Begin the game, sets all varaibles to defaults
 @app.route('/start', methods=["POST"])
 def start():
     start_new_game(session)
@@ -133,20 +134,34 @@ def start():
     else:
         flash('No words exist in database', category="fail")
         return redirect(url_for("viewlib"))
+    
+
+#view libraires for users to select game
+@app.route('/viewlib', methods=['GET', 'POST'])
+def viewlib():
+    titles = set()
+    for item in lib.find({}):
+        title = item.get("title")
+        if title:
+            titles.add(title)
+    return render_template("viewlib.html", titles=titles)
 
 
+# updates the image based on how many guesses are left
 @app.route('/updateimage', methods=["POST" , "GET"])
 def update_image():
     guesses_left = session.get('guesses_left')
     return jsonify(guesses_left)
 
 
+#  js route to check each turn if the game is won or lost
 @app.route('/isGameOver', methods=["POST" , "GET"])
 def game_over():
     game_over = session.get('game_over')
     return jsonify(game_over)
 
 
+# route to send players to pass screen, js checks value of game_over to determine
 @app.route('/pass')
 def passLevel():
     time.sleep(0.1)
@@ -154,13 +169,12 @@ def passLevel():
     return render_template('pass.html', databaseWord=database_word)
 
 
+# route to send players to fail screen, js checks value of game_over to determine
 @app.route('/fail')
 def failLevel():
     time.sleep(0.1)
     database_word = session.get('database_word', "")
     return render_template('fail.html', databaseWord=database_word)
-
-
 
 
 # used to login to the game
@@ -215,12 +229,14 @@ def signup():
 
     return render_template('signup.html', boolean=True)
 
+
 # used to logout the game
 @app.route("/logout")
 def logout():
     flash("you have been logged out", category="pass")
     session.pop("user")
     return redirect(url_for("login"))
+
 
 # Route for user profile
 @app.route("/profile/<username>", methods=["GET","POST"])
@@ -229,6 +245,7 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=session["user"])
     return redirect(url_for("login"))
+
 
 #finds all the user assosiated libraries.
 @app.route("/userlibrary/<username>", methods=["GET", "POST"])
@@ -242,6 +259,7 @@ def userlibrary(username):
             words[title] = []
         words[title].append(word)
     return render_template("userlibrary.html", username=session['user'], words=words )
+
 
 #adding words to a library
 @app.route('/addword', methods=["POST"])
@@ -261,6 +279,7 @@ def addword():
         lib.insert_one(newword)
     return redirect(url_for("userlibrary", username=session['user']))
 
+
 # route to delete word in database
 @app.route('/delword/', methods=['POST'])
 def delword():
@@ -268,6 +287,7 @@ def delword():
     title = request.form.get('title')
     lib.delete_one({'word': word, 'title': title,})
     return redirect(url_for("userlibrary", username=session['user']))
+
 
 #route to edit words in database
 @app.route('/editword', methods=['POST'])
@@ -282,6 +302,7 @@ def editword():
         lib.update_one({'word': word, 'title': title,}, {'$set': {'word': word2}})
         flash("word updated sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
+
 
 # route to add a new library to the database
 @app.route('/addtitle', methods=["POST"])
@@ -301,12 +322,6 @@ def addtitle():
         lib.insert_one(newword)
         flash("new Library created sucessfully", category="pass")
     return redirect(url_for("userlibrary", username=session['user']))
-
-
-
-
-
-
 
 
 if __name__ == "__main__":

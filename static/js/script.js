@@ -1,5 +1,5 @@
 
-/**sends the value of the specific button pressed */
+/**sends the value of the specific button pressed part one, to handle the holding of the form. and when to send it*/
 function sendValueEvent(event) {
     event.preventDefault();
     let buttonValue = event.target.value;
@@ -13,7 +13,7 @@ function sendValueEvent(event) {
         console.error('Error:', error);
     });
 }
-
+/** sends the value of the specific button pressed part two, sending response to python and wait for a return, if success then sends that to the 1st funtion*/
 function sendValue(buttonValue) {
     return fetch('/button', {
         method: 'POST',

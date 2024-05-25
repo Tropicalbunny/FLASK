@@ -430,6 +430,10 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
     .update-word{
         width:70px
     }
+    #info{
+        width: 320px;
+        height:320px;
+    }
 }
 @media screen and (max-width: 495px) {
     /* navbar tweaks to sit better on smaller devices */
@@ -452,6 +456,11 @@ TAKEN FROM MY PROJECT 1 https://github.com/Tropicalbunny/MyRepo/tree/main
         width: 300px;
         padding: 10px;
         font-size: 80%;
+    }
+    #info{
+        width: 220px;
+        height:320px;
+        font-size: medium;
     }
 
 }
