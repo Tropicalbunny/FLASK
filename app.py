@@ -71,7 +71,6 @@ def hangman(guess, session):
 
     session['correct_letters'] = correct_letters
     session['guessed_letters'] = guessed_letters
-    print("cookie", session['correct_letters'])
     if all(letter in guessed_letters for letter in database_word):
         session['game_over'] = 2
 
@@ -101,7 +100,6 @@ def buttonpress():
 @app.route('/gameboard')
 def gameboard():
     correct_letters = session['correct_letters']
-    print("gameboard", correct_letters)
     return render_template('gameboard.html', displayedLetters=correct_letters)
 
 
@@ -261,7 +259,6 @@ def addword():
         flash('word is already in your library', category="fail")
     else:
         lib.insert_one(newword)
-        print(newword)
     return redirect(url_for("userlibrary", username=session['user']))
 
 # route to delete word in database

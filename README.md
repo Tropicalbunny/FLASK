@@ -190,6 +190,7 @@ This came with a whole host of new issues.
 - when game board was re-loading it was not loading the most up to date guess, rather the one prior to it. Debbugging took a while. and i narrowed it down to gameboard being ran before the session "correct_letters" had been updated.
  1. i tried adding time.sleep to try and give time for the session to update
  2. i tried calling the gameboard function within the hangman function.
+ 3. i admitted defeat and asked stack overflow for help, i fellow coder suggested "event.preventdefault()" this was a breakthrough as i now realised i could hold the submission of the form until the responce from hangman returned success. by doing this i could wait until the cookie was fully updated before submitting the from, i had a few bugs on making sure the function could return the success. but its back to fully working now
 ## Deployment
 
 ---
