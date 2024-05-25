@@ -2,7 +2,7 @@
 /**sends the value of the specific button pressed */
 function sendValueEvent(event) {
     event.preventDefault();
-    buttonValue = event.target.value;
+    let buttonValue = event.target.value;
     sendValue(buttonValue).then(response => {
         if (response === 'success') {
             event.target.form.submit();
@@ -15,7 +15,7 @@ function sendValueEvent(event) {
 }
 
 function sendValue(buttonValue) {
-    fetch('/button', {
+    return fetch('/button', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
