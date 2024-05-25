@@ -20,11 +20,12 @@ function sendValue(buttonValue) {
         headers: {
             'Content-Type': 'application/json',
         },
+        body: JSON.stringify({ value: buttonValue }),
     })
     .then(response => response.json())
     .then(data => {
         if (data.status === 'success') {
-            return'success';
+            return 'success';
         }else {
             console.error('Error processing guess:', data);
             throw new Error('Error processing guess');
