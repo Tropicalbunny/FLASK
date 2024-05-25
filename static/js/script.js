@@ -13,6 +13,8 @@ function sendValueEvent(event) {
         console.error('Error:', error);
     });
 }
+
+
 /** sends the value of the specific button pressed part two, sending response to python and wait for a return, if success then sends that to the 1st funtion*/
 function sendValue(buttonValue) {
     return fetch('/button', {
@@ -32,36 +34,42 @@ function sendValue(buttonValue) {
         }
     })
 }
+
+
 fetch('/updateimage')
     .then(response => response.json())
     .then(data => {
         if (data == 6) {
-            document.getElementById('hangman-image-inner').src = "/static/images/hang2.png"
+            document.getElementById('hangman-image-inner').src = "/static/images/hang2.png";
     } else if (data == 5){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang3.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang3.png";
     } else if (data == 4){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang4.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang4.png";
     } else if (data == 3){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang5.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang5.png";
     } else if (data == 2){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang6.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang6.png";
     } else if (data == 1){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang7.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang7.png";
     } else if (data == 0){
-        document.getElementById('hangman-image-inner').src = "/static/images/hang8.png"
+        document.getElementById('hangman-image-inner').src = "/static/images/hang8.png";
     } else {
-        document.getElementById('hangman-image-inner').src = "/static/images/hang1.png" 
+        document.getElementById('hangman-image-inner').src = "/static/images/hang1.png";
     }
 });
+
+
 fetch('/isGameOver')
     .then(response => response.json())
     .then(data => {
         if (data == 1) {
-            window.location.href = '/fail'
+            window.location.href = '/fail';
     } else if (data == 2){
-        window.location.href = '/pass'
+        window.location.href = '/pass';
     }
-})
+});
+
+
 /** function to remove buttons after they are pressed */
 function hideButton(buttonId) {
         var button = document.getElementById(buttonId);
@@ -86,11 +94,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let infoClose = document.getElementById('info-close');
     infoOpen.addEventListener('click', function(){
         infoContainer.style.display = 'block';
-    })
+    });
     
     infoClose.addEventListener('click', function(){
         infoContainer.style.display = 'none';
         
-    })
+    });
     
 });
