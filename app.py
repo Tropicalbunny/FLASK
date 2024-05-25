@@ -96,15 +96,13 @@ def buttonpress():
     
     return jsonify({
         'status': 'success',
-        'correct_letters': session['correct_letters'],
-        'guessed_letters': session['guessed_letters'],
-        'guesses_left': session['guesses_left'],
-        'game_over': session['game_over']
     })
 
 @app.route('/gameboard')
 def gameboard():
-    return render_template('gameboard.html')
+    correct_letters = session['correct_letters']
+    print("gameboard", correct_letters)
+    return render_template('gameboard.html', displayedLetters=correct_letters)
 
 
 @app.route('/viewlib', methods=['GET', 'POST'])
